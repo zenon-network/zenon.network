@@ -1,0 +1,581 @@
+@import settings
+
+h4, h5, h6
+  margin: 0
+
+p, h1, h2, h3
+  margin: 0
+
+section
+  position: relative
+
+button
+  background: none
+  cursor: pointer
+  outline: 0
+
+hr, ol, ul
+  margin: 0
+
+hr
+  border-top: 1px solid rgba(0,0,0,0.1)
+
+img
+  width: 100%
+  height: auto
+
+.clearfix
+  clear: both
+
+.container
+  width: 100%
+  padding-right: 1.2rem
+  padding-left: 1.2rem
+  margin-right: auto
+  margin-left: auto
+
+  @media screen and ( min-width: $small-screen)
+    max-width: 90%
+  @media screen and ( min-width: $medium-screen)
+    max-width: 90%
+  @media screen and ( min-width: $large-screen)
+    max-width: 90%
+  @media screen and ( min-width: $xlarge-screen)
+    max-width: 1000px
+  @media screen and ( min-width: $xxlarge-screen)
+    max-width: 1200px
+  @media screen and ( min-width: $xxxlarge-screen)
+    max-width: 1400px
+    
+header
+  width: 100%
+  position: fixed
+  z-index: 9
+  transition: top 0.3s linear
+  &.fixed
+    top: 0
+    background: transparent
+  &.active
+    top: 0
+    background: $card-bg
+  &.inactive
+    top: -11rem
+    background: $card-bg
+  @media screen and (max-width: $large-screen)
+    &.inactive
+      top: -25rem
+  @media screen and (max-width: $medium-screen)
+    &.inactive
+      top: -14rem
+
+.tooltip
+  position: relative
+  display: inline-block
+  border-bottom: 1px dotted black
+  .tooltiptext
+    visibility: hidden
+    width: 12rem
+    background-color: $card-bg
+    color: white
+    text-align: center
+    padding: 5px 0
+    border-radius: 6px
+    position: absolute
+    z-index: 1
+    top: 4rem
+  &:hover .tooltiptext
+    visibility: visible
+
+.card-big
+  display: flex
+  &__wrapper
+    background: $card-bg
+    border-radius: 2.7rem
+    padding: 3rem
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    height: 100%
+    width: 100%
+  h4
+    font-size: 4.1rem
+    line-height: 4rem
+    font-weight: 900
+    @include text-gradient(linear, #3F3F3F, rgba(0, 0, 0, 0.4), -180deg)
+  h3
+    font-family: $primary-font
+    font-weight: 900
+    font-size: 3rem
+    line-height: 1.1
+    @include text-gradient(radial, white, #9A9A9A, ellipse at top)
+  p
+    color: #5C5C5C
+    font-size: 2rem
+    line-height: 2.4rem
+    font-weight: 400
+    flex: 1 0 auto
+  a
+    font-size: 2.3rem
+    font-weight: 400
+    color: white
+    text-decoration: none
+    align-self: flex-end
+    display: flex
+    align-items: center
+    gap: 7px
+    i
+      font-size: 1.5rem
+
+  @media screen and (max-width: $small-screen)
+    height: 100%!important
+  @media screen and (min-width: $small-screen)
+    h3
+      font-size: 4rem
+    p
+      font-size: 2.2rem
+      line-height: 2.7rem
+
+.card
+  width: 100%
+  position: relative
+  overflow: hidden
+  p
+    color: $gray
+    font-size: 9px
+    line-height: 1.1
+  & > div
+    width: 100%
+    height: 100%
+    position: relative
+    background: rgba(27, 27, 27, 0.5)
+    padding: 1rem 2rem
+    &::before
+      content: ""
+      background: $green
+      top: 0
+      left: 0
+      position: absolute
+      width: 1rem
+      height: 100%
+      border-top-left-radius: 1rem
+      border-bottom-left-radius: 1rem
+  &__live
+    color: $green
+    font-size: 1rem
+    font-weight: 500
+    text-transform: uppercase
+    position: relative
+    &--tba
+      color: $lite-gray
+      font-size: 1.4rem!important
+      line-height: 1
+    &.live
+      &::before
+        content: ""
+        display: inline-block
+        background: $green
+        width: 7px
+        height: 7px
+        border-radius: 50%
+        margin-right: 4px
+        animation: pulse 2s infinite
+  &__title
+    display: block
+    font-size: 1rem
+    line-height: 1.1
+    text-decoration: none
+    margin-bottom: 5px
+    @include text-gradient(linear, white, $lite-gray, 180deg)
+
+  @media screen and (min-width: $medium-screen)   
+    border-top-right-radius: 1.5rem
+    border-bottom-right-radius: 1.5rem
+    & > div
+      padding: 1.6rem 3.5rem
+      &::before
+        width: 1.4rem
+        border-top-left-radius: 1.5rem
+        border-bottom-left-radius: 1.5rem
+    &__live
+      font-size: 1.2rem
+    &__title
+      font-size: 2.5rem
+    p
+      font-size: 1.8rem
+
+.btn
+  display: inline-flex
+  align-items: center
+  font: 500 $font-size-small $primary-font
+  line-height: 1.9rem
+  padding: 1.2rem 3.5rem
+  border: 0.15rem solid white
+  border-radius: 0.4rem
+  color: white
+  text-decoration: none
+  position: relative
+  &--block
+    width: 100%
+    text-align: center
+  &--white
+    &:hover, &.active
+      color: $black
+      background: white
+      border-color: $black
+  &--primary
+    border-color: $green
+    &:hover, &.active
+      background: linear-gradient(105deg, $green 38%, #168F2B 98%)
+      border-color: $black
+
+  &--secondary
+    border-color: $magenta
+    &:hover, &.active
+      background: linear-gradient(105deg, $magenta 38%, #C9006C 98%)
+      border-color: $black
+
+  &--ternary
+    border-color: $lite-blue
+    &:hover, &.active
+      background: linear-gradient(105deg, $lite-blue 38.92%, #002BC2 98.42%)
+      border-color: $black
+
+  &--rounded
+    border-radius: 6.7rem
+
+.btn--right:after
+  content: "\f061"
+  font-family: "Font Awesome 5 Free"
+  padding-left: 5px
+.btn--right-small:after
+  content: "\f061"
+  font-family: "Font Awesome 5 Free"
+  padding-left: 8px
+  font-size: 13px
+  vertical-align: 1px
+
+.burger-menu
+  display: block
+  padding: 0.6rem 1.2rem
+  font-size: 2rem
+  height: 100%
+  cursor: pointer
+  &:hover,&.active
+    background: white
+    color: $black
+  @media screen and (min-width: $medium-screen)
+    display: none
+
+.section
+  margin-bottom: 4rem
+
+  &__right
+    width: 100%
+    display: flex
+    justify-content: center
+  &__left
+    width: 100%
+
+  &__container
+    width: 100%
+    margin-right: auto
+    margin-left: auto
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-direction: column
+
+    &--column
+      flex-direction: column
+
+  &__buttons
+    display: flex
+    gap: 1.5rem
+    margin-top: 1.8rem
+    flex-direction: column
+
+  &__top
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
+    flex-direction: column
+    gap: 4rem
+
+  &__row
+    display: flex
+    flex-direction: column
+    gap: 10%
+    width: 100%
+    height: auto
+    padding: 2rem 3rem 2rem 3rem
+    text-align: center
+    background: linear-gradient(90deg, rgba(26, 26, 26, 0) 8.08%, #1A1A1A 48.51%, rgba(26, 26, 26, 0) 98.68%)
+  
+  @media screen and ( min-width: $medium-screen)
+    &__container:not(.section__container--column)
+      flex-direction: row
+    &__top
+      flex-direction: row
+      gap: 0
+    &__row
+      flex-direction: row
+      padding: 3rem 4rem 2rem 10rem
+      text-align: initial
+      margin-bottom: 3rem
+    &__right
+      justify-content: flex-end
+    &__buttons
+      flex-direction: row
+  @media screen and ( min-width: $xlarge-screen)
+    &__container
+      gap: 0
+
+.big-dot
+  width: 1.6rem
+  height: 1.6rem
+  border-radius: 50%
+  background: linear-gradient($lite-green, $green)
+  box-shadow: 0 0 8px $lite-green
+.medium-dot
+  width: 9px
+  height: 9px
+  border-radius: 50%
+  background: linear-gradient($lite-green, $green)
+  box-shadow: 0 0 8px $lite-green
+.small-dot
+  width: 7px
+  height: 7px
+  border-radius: 50%
+  background: linear-gradient($lite-green, $green)
+
+.box
+  width: 24.5rem
+  height: 24.5rem
+  background: linear-gradient(180deg, #303030 0%, rgba(48, 48, 48, 0) 100%)
+  border-radius: 30px
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-grow: 0
+  flex-shrink: 0
+
+.tab-slider
+  &__container
+    width: 100%
+  &__nav
+    display: flex
+    border: 1px solid $green
+    border-radius: 3.5rem
+    transition: all 250ms ease-in-out
+  &__tabs
+    display: flex
+    margin: 3px
+    padding: 0
+    list-style: none
+    position: relative
+    border-radius: 3.5rem
+    user-select: none
+    &:after
+      content: ""
+      width: 50%
+      background: linear-gradient(105deg, $green 38%, #168F2B 98%)
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      transition: all 250ms ease-in-out
+      border-radius: 3.5rem
+    &.slide:after
+      left: 50%
+      background: linear-gradient(120deg, #446AEF 38%, #0BB92A 98%)
+
+  &__trigger
+    display: inline-block
+    font: 500 $font-size-small $primary-font
+    line-height: 1.9rem
+    padding: 1.2rem 5rem
+    color: white
+    text-decoration: none
+    position: relative
+    text-transform: capitalize
+    transition: color 250ms ease-in-out
+    cursor: pointer
+    user-select: none
+    z-index: 2
+    &.active
+      color: white
+
+  &__body
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+
+  &__content
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    gap: 3rem
+
+  &__left
+    flex: 1 0 100%
+    max-width: 100%
+  &__right
+    flex: 1 0 100%
+    max-width: 100%
+
+  @media screen and (min-width: $large-screen)
+    &__left
+      flex: 1 0 50%
+      max-width: 50%
+    &__right
+      flex: 1 0 40%
+      max-width: 40%
+    &__nav
+      margin-bottom: 2rem
+    &__content
+      flex-direction: row    
+
+
+.icons
+  display: flex
+  gap: 2rem
+.icon
+  width: 6rem
+  height: 6rem
+  border-radius: 1.2rem
+  border: 1px solid $darkgray
+  display: flex
+  align-items: center
+  justify-content: center
+  overflow: hidden
+  background: black
+  &.active, &:hover
+    cursor: pointer
+    border-color: $green
+  i
+    font-size: 5rem
+    color: black
+  img
+    height: 100%
+    width: auto
+  &.s
+    background: #000
+    h5
+      font-size: 4rem
+      font-weight: 500
+
+@media screen and ( min-width: $large-screen)
+  .icons
+    display: flex
+    gap: 2rem
+  .icon
+    width: 8rem
+    height: 8rem
+
+
+.range-slider
+  &__legacy,
+  &__alphanet
+    width: 100%
+    .stakingReward
+      .znn,
+      .qsr,
+      & > div
+        display: inline-block
+  &__container
+    width: 100%
+    margin-bottom: 3rem
+
+    .rs-container .rs-pointer
+      width: 3rem
+      height: 3rem
+      border-radius: 50%
+      top: -0.5rem
+      box-shadow: none
+      border: none
+      background: linear-gradient(90deg, $green, #168F2B)
+      &::after,
+      &::before
+        width: auto
+        height: auto
+        background: transparent
+        color: white
+        font-size: 1.4rem
+        top: 4px
+      &::before
+        content: '<'
+        left: 5px
+      &::after
+        content: '>'
+        right: 5px
+    .rs-container .rs-scale
+      display: flex
+    .rs-container .rs-scale span ins
+      visibility: hidden
+    .rs-container .rs-bg, .rs-container .rs-selected
+      background-color: $gray
+      border: 1px solid $gray
+    .rs-container .rs-selected
+      background: linear-gradient(90deg, $green, #168F2B)
+      border: 1px solid #168F2B
+    .rs-container .rs-scale span::before
+      top: 2.5rem
+      background-color: $gray
+      width: 2px
+    .rs-container .rs-scale span ins
+      margin-top: 3rem
+  &__header
+    display: flex
+    justify-content: space-between
+    align-items: baseline
+    margin-bottom: 1.5rem
+
+.custom-container
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100%
+
+#intro
+  width:100%
+  &.invisible
+    position: absolute
+  @media screen and (max-width: $small-screen)
+    width: 400%
+
+.lds-dual-ring
+  display: inline-block
+  width: 80px
+  height: 80px
+  z-index: 9
+  position: absolute
+  top: 50%
+  bottom: 50%
+  margin-top: -40px
+  left: 50%
+  right: 50%
+  margin-left: -40px
+  &:after
+    content: " "
+    display: block
+    width: 64px
+    height: 64px
+    border-radius: 50%
+    border: 6px solid $green
+    border-color: $green transparent $green transparent
+    animation: lds-dual-ring 1.2s linear infinite
+
+@keyframes lds-dual-ring
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
+#znnxqsr,
+#portal
+  width: 100%
+  max-height: 54rem
+
+  @media screen and (max-width: $small-screen)
+    max-height: 20rem
