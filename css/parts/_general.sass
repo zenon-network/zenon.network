@@ -20,15 +20,27 @@ hr, ol, ul
 hr
   border-top: 1px solid rgba(0,0,0,0.1)
 
-img
-  width: 100%
-  height: auto
+// img
+//   width: 100%
+//   height: auto
 
 .uppercase
   text-transform: uppercase
 
 .clearfix
   clear: both
+
+.mb-0
+  margin-bottom: 0!important
+
+.mb-auto
+  margin-bottom: auto!important
+
+.mt-0
+  margin-top: 0!important
+
+.mt-auto
+  margin-top: auto!important
 
 .container
   width: 100%
@@ -49,21 +61,21 @@ img
     max-width: 1200px
   @media screen and ( min-width: $xxxlarge-screen)
     max-width: 1400px
-    
+
 header
   width: 100%
   position: fixed
-  z-index: 9
+  z-index: 9999
   transition: top 0.3s linear
   &.fixed
     top: 0
     background: transparent
   &.active
     top: 0
-    background: $card-bg
+    background: $black
   &.inactive
     top: -11rem
-    background: $card-bg
+    background: $black
   @media screen and (max-width: $large-screen)
     &.inactive
       top: -25rem
@@ -190,7 +202,7 @@ header
     margin-bottom: 5px
     @include text-gradient(linear, white, $lite-gray, 180deg)
 
-  @media screen and (min-width: $medium-screen)   
+  @media screen and (min-width: $medium-screen)
     border-top-right-radius: 1.5rem
     border-bottom-right-radius: 1.5rem
     & > div
@@ -207,9 +219,10 @@ header
       font-size: 1.8rem
 
 .gradient-btn
+  display: inline-block
   border-radius: 0.9rem
-  font: 500 $font-size-large $primary-font
-  padding: 2rem 5rem
+  font: 500 $font-size-small $primary-font
+  padding: 1.4rem 2rem
   color: white
   text-decoration: none
   position: relative
@@ -218,11 +231,39 @@ header
   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #6BFF85, #1471DD, #980C71)
   background-origin: border-box
   background-clip: content-box, border-box
-  box-shadow: 2px 1000px 1px rgba(21, 21, 21, 1) inset
+  box-shadow: 2px 1000px 1px rgba(14, 14, 14, 1) inset
+  transition: background 0.5 ease-in-out
   &:hover
-    box-shadow: none
-    color: white
-  
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #980C71, #1471DD, #6BFF85)
+  &[disabled]
+    pointer-events: none
+    opacity: 0.4
+  @media screen and (min-width: $medium-screen)
+    font: 500 $font-size-large $primary-font
+    padding: 2rem 5rem
+
+.gradient-inverse-btn
+  border-radius: 0.9rem
+  font: 500 $font-size-small $primary-font
+  padding: 1.4rem 2rem
+  color: white
+  text-decoration: none
+  position: relative
+  box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5)
+  border: solid 3px transparent
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #6BFF85, #1471DD, #980C71)
+  background-origin: border-box
+  background-clip: content-box, border-box
+  box-shadow: none
+  &:hover
+    box-shadow: 2px 1000px 1px rgba(14, 14, 14, 1) inset
+  &[disabled]
+    pointer-events: none
+    opacity: 0.4
+  @media screen and (min-width: $medium-screen)
+    font: 500 $font-size-large $primary-font
+    padding: 2rem 5rem
+
 .btn
   display: inline-flex
   align-items: center
@@ -234,6 +275,21 @@ header
   color: white
   text-decoration: none
   position: relative
+  &[disabled]
+    pointer-events: none
+    opacity: 0.4
+  @media screen and (min-width: $medium-screen)
+    font: 500 $font-size-large $primary-font
+    padding: 2rem 5rem
+
+  &--simple
+    border: none
+    padding: 0
+    i
+      @include text-gradient(linear, #6BFF85, #1471DD, 90deg)
+    &:hover
+      @include text-gradient(linear, #6BFF85, #1471DD, 90deg)
+
   &--block
     width: 100%
     text-align: center
@@ -331,7 +387,7 @@ header
     padding: 2rem 3rem 2rem 3rem
     text-align: center
     background: linear-gradient(90deg, rgba(26, 26, 26, 0) 8.08%, #1A1A1A 48.51%, rgba(26, 26, 26, 0) 98.68%)
-  
+
   @media screen and ( min-width: $medium-screen)
     &__container:not(.section__container--column)
       flex-direction: row
@@ -380,17 +436,81 @@ header
   flex-grow: 0
   flex-shrink: 0
 
+.flipster--flat .flipster__item--past, .flipster--flat .flipster__item--future
+  opacity: 1!important
+.flipster
+  overflow-x: visible!important
+  &__nav
+    position: relative
+    user-select: none
+    display: flex!important
+    flex-wrap: wrap
+    justify-content: center
+    // border-radius: 4rem
+    transition: all 250ms ease-in-out
+    // background: $card-bg
+    // padding: 7px 12px!important
+    margin: 0 0 0!important
+    overflow-x: auto
+    -ms-overflow-style: none
+    scrollbar-width: none
+    &::-webkit-scrollbar
+      display: none
+    &__item
+      flex: 0 0 auto
+      margin: 0!important
+      border-radius: 3.5rem
+      transition: all 250ms ease-in-out
+      color: #3D3D3D
+      &--current
+        background: linear-gradient(105deg, $green 38%, #168F2B 98%)
+
+    &.sliding:after
+      left: 66.66%
+      background: linear-gradient(120deg, $magenta 38%, #446AEF 98%)
+    &.slide:after
+      left: 33.33%
+      background: linear-gradient(120deg, #446AEF 38%, #0BB92A 98%)
+    &__link
+      display: inline-block!important
+      font: 900 1rem $primary-font
+      line-height: 1.9rem
+      // padding: 0.5rem 1.5rem!important
+      color: $fade-white
+      text-decoration: none
+      position: relative
+      text-transform: capitalize
+      transition: color 250ms ease-in-out
+      cursor: pointer
+      user-select: none
+      z-index: 2
+      &::after
+        content: none!important
+
+  @media screen and (min-width: $medium-screen)
+    &__nav
+      // padding: 13px 16px!important
+      margin: 0 0 4rem!important
+      &__link
+        font: 900 $font-size-small $primary-font
+        // padding: 1.2rem 5rem!important
+  @media screen and (min-width: $xlarge-screen)
+    &__nav
+      flex-wrap: nowrap
+      justify-content: space-between
+
 .tab-slider
   &__container
     width: 100%
+    height: auto
   &__nav
-    display: flex
-    border: 1px solid $green
-    border-radius: 3.5rem
+    display: inline-block
+    border-radius: 4rem
     transition: all 250ms ease-in-out
+    background: $card-bg
+    padding: 13px 16px
   &__tabs
     display: flex
-    margin: 3px
     padding: 0
     list-style: none
     position: relative
@@ -398,7 +518,7 @@ header
     user-select: none
     &:after
       content: ""
-      width: 50%
+      width: 33.33%
       background: linear-gradient(105deg, $green 38%, #168F2B 98%)
       height: 100%
       position: absolute
@@ -406,16 +526,19 @@ header
       left: 0
       transition: all 250ms ease-in-out
       border-radius: 3.5rem
+    &.sliding:after
+      left: 66.66%
+      background: linear-gradient(120deg, $magenta 38%, #446AEF 98%)
     &.slide:after
-      left: 50%
+      left: 33.33%
       background: linear-gradient(120deg, #446AEF 38%, #0BB92A 98%)
 
   &__trigger
     display: inline-block
-    font: 500 $font-size-small $primary-font
+    font: 900 $font-size-small $primary-font
     line-height: 1.9rem
     padding: 1.2rem 5rem
-    color: white
+    color: $fade-white
     text-decoration: none
     position: relative
     text-transform: capitalize
@@ -445,6 +568,8 @@ header
     max-width: 100%
 
   @media screen and (min-width: $large-screen)
+    &__container
+      height: 100%
     &__left
       flex: 1 0 50%
       max-width: 50%
@@ -454,8 +579,7 @@ header
     &__nav
       margin-bottom: 2rem
     &__content
-      flex-direction: row    
-
+      flex-direction: row
 
 .icons
   display: flex
@@ -492,7 +616,6 @@ header
   .icon
     width: 8rem
     height: 8rem
-
 
 .range-slider
   &__legacy,
@@ -551,18 +674,148 @@ header
     align-items: baseline
     margin-bottom: 1.5rem
 
+/* ******** The Modal ******** */
+.modal
+  position: fixed
+  z-index: 99999
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  overflow-x: hidden
+  overflow-y: auto
+  background-color: rgb(0,0,0)
+  background-color: rgba(0,0,0,0.7)
+  &.fade
+    transition: opacity 0.15s linear
+  &.fade .modal__dialog
+    transition: transform 0.3s ease-out
+    transform: translate(0,-25%)
+  &.fade:not(.show)
+    display: none
+    opacity: 0
+  &.show
+    transform: translate(0,0)
+  &.show .modal__dialog
+    transform: translate(0,0)
+  &__dialog
+    max-width: 76rem
+    margin: 7rem auto
+    @media (max-width: 768px)
+      max-width: 95%
+  &--close
+    float: right
+    font-size: $font-size-small
+    font-weight: 700
+    line-height: 1
+    border: 0
+    color: #fff
+    text-shadow: 0 1px 0 #000
+    opacity: 0.5
+    &:hover, &:focus
+      color: #fff
+      text-decoration: none
+      opacity: 0.75
+  &__content
+    position: relative
+    display: flex
+    flex-direction: column
+    width: 100%
+    pointer-events: auto
+    background-color: $black
+    background-clip: padding-box
+    border: none
+    outline: 0
+  &__title
+    margin: 0
+  &__header
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+    padding: 1rem
+    border-bottom: 1px solid #1b1b1b
+    & .modal--close
+      padding: 1rem
+      margin: -1rem -1rem -1rem auto
+  &__body
+    position: relative
+    flex: 1 1 auto
+    padding: 1rem
+  &__footer
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    padding: 1rem
+    border-top: 1px solid #1b1b1b
+
+.dropdown
+  position: relative
+  display: inline-block
+  border-radius: 2rem
+  width: 100%
+  &__content
+    display: none
+    position: absolute
+    flex-direction: column
+    background-color: $black
+    min-width: 160px
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
+    z-index: 1
+    width: 100%
+    border-bottom-left-radius: 2rem
+    border-bottom-right-radius: 2rem
+    a
+      color: white
+      padding: 12px 16px
+      text-decoration: none
+      display: flex
+      align-items: center
+      gap: 2rem
+      font-size: 2.3rem
+      img
+        height: 3rem
+      &:last-child:hover
+        border-bottom-left-radius: 2rem
+        border-bottom-right-radius: 2rem
+      &:hover
+        background-color: $card-bg
+  &:hover:not(.disabled)
+    .gradient-btn,
+    .gradient-inverse-btn
+      border-bottom-left-radius: 0
+      border-bottom-right-radius: 0
+    .dropdown__content
+      display: flex
+  @media screen and (min-width: $medium-screen)
+    width: auto
+
 .custom-container
   display: flex
   align-items: center
   justify-content: center
   height: 100%
 
+.hidden
+  &-sm
+    display: none!important
+    @media screen and (min-width: $large-screen)
+      display: flex !important
+.visible
+  &-sm
+    display: inline-block !important
+    @media screen and (min-width: $large-screen)
+      display: none !important
+
 #intro
-  width:100%
+  width: 100%
+  top: 0
+  left: 0
+  position: fixed
+  height: 100%
   &.invisible
-    position: absolute
+    position: fixed
   @media screen and (max-width: $small-screen)
-    width: 400%
+    // width: 400%
 
 .lds-dual-ring
   display: inline-block
@@ -599,3 +852,15 @@ header
 
   @media screen and (max-width: $small-screen)
     max-height: 20rem
+
+#dna
+  width: 100%
+  max-height: 25rem
+  @media screen and (min-width: $small-screen)
+    max-height: 35rem
+  @media screen and (min-width: $medium-screen)
+    max-height: 45rem
+  @media screen and (min-width: $large-screen)
+    max-height: 55rem
+  @media screen and (min-width: $xlarge-screen)
+    max-height: 65rem

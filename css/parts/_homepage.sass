@@ -2,14 +2,14 @@
   &.hidden
     display: none
 #loader
-  position: absolute
+  position: fixed
   width: 100%
   height: 100%
   top: 0
   left: 0
   right: 0
   bottom: 0
-  background: #151515
+  background: black
   z-index: 99
   &.fadeIn
     opacity: 1
@@ -24,14 +24,14 @@
 .animateBody
   overflow: hidden
 
-.wrapper
-  background-image: url(../img/holo.png)
-  background-size: 90%
-  background-position: center 12rem
-  background-repeat: no-repeat
-  @media screen and (min-width: $medium-screen)
-    background-position: top center
-  
+// .wrapper
+//   background-image: url(../img/holo.png)
+//   background-size: 90%
+//   background-position: center 12rem
+//   background-repeat: no-repeat
+//   @media screen and (min-width: $medium-screen)
+//     background-position: top center
+
 #blue
   background: url('../img/circle-right.png')
   background-size: contain
@@ -51,16 +51,15 @@
   left: 0
   z-index: 0
 
-
 @keyframes pulse
   0%
     transform: scale(0.95)
     box-shadow: 0 0 0 0 rgba(59, 218, 87, 0.7)
-  
+
   70%
     transform: scale(1)
     box-shadow: 0 0 0 10px rgba(59, 218, 87, 0)
-  
+
   100%
     transform: scale(0.95)
     box-shadow: 0 0 0 0 rgba(59, 218, 87, 0)
@@ -195,9 +194,16 @@
     gap: 2rem
     padding: 0
     a
-      padding: 0.8rem 1rem
+      width: 10rem
+      padding: 0.8rem 0
       line-height: 1
       align-self: center
+      justify-content: center
+      font-size: 1.5rem
+      &:hover .change
+        display: none
+    &--change:hover::before
+      content: 'BUY'
   &__logo
     display: flex
     flex-direction: column
@@ -216,13 +222,15 @@
     align-items: center
     list-style: none
     padding-left: 0
-    justify-content: flex-start
+    justify-content: space-evenly
     gap: 2rem
+    flex: 1 1 auto
     a
       font-size: 1.8rem
       line-height: 2.4rem
-      color: #5C5C5C
+      color: white
       text-decoration: none
+      text-transform: uppercase
       &:hover, &.active
         color: $green
 
@@ -268,10 +276,10 @@
     flex-direction: row
     flex-wrap: wrap
     padding-top: 3rem
-    padding-bottom: 3rem 
+    padding-bottom: 3rem
     &__social
       h3
-        margin: 2.4rem 0 0 
+        margin: 2.4rem 0 0
 
 .table
   border: 1px solid #333333
@@ -355,7 +363,164 @@
         border-right: 1px solid #333!important
 
 #bigTitle
-  margin-top: 9.5rem
+  margin-top: 11rem
+  margin-bottom: 5rem
+  // background-image: url('../img/header-bg.png')
+  background-image: url('../img/ball.png')
+  background-size: contain
+  background-position: 30rem 0
+  background-repeat: no-repeat
+  padding: 5rem 0
+  .darken
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    background: rgba(0,0,0,0.4)
+  @media screen and (min-width: $small-screen)
+    margin-bottom: 0
+    background-position: 95% 20%
+    background-size: 50%
+  @media screen and (min-width: $medium-screen)
+    padding: 10rem 0
+    background-size: 45%
+  @media screen and (min-width: $large-screen)
+    background-size: 40%
+    .darken
+      display: none
+      background-size: 80%
+      padding: 10rem 0
+  @media screen and (min-width: $xlarge-screen)
+    background-size: 35%
+    background-position: 90% 0
+
+#timeline
+  background-image: url('../img/star-background.png')
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: cover
+  @media screen and (min-width: $medium-screen)
+    background-size: 100%
+
+.bigTitle
+  .section__container
+    align-items: flex-start
+    gap: 4rem
+  &__brands
+    display: flex
+    align-items: center
+    width: 100%
+    gap: 2rem
+    flex-wrap: wrap
+    .brand
+      width: 100%
+      height: 5rem
+      display: inline-block
+      position: relative
+      background-position: center center
+      background-size: contain
+      background-repeat: no-repeat
+      &.ct
+        background-image: url('../img/CT.svg')
+        filter: grayscale(1)
+        opacity: 0.2
+        width: 18rem
+        height: 4rem
+        &:hover
+          filter: grayscale(0)
+          opacity: 1
+      &.bs
+        background-image: url('../img/BS.svg')
+        filter: grayscale(1)
+        opacity: 0.2
+        width: 9rem
+        height: 5rem
+        &:hover
+          filter: grayscale(0)
+          opacity: 1
+      &.yf
+        background-image: url('../img/YF.svg')
+        filter: grayscale(1)
+        width: 10rem
+        height: 4rem
+        &:hover
+          filter: grayscale(0)
+      &.hk
+        background-image: url('../img/HK.svg')
+        filter: grayscale(1)
+        opacity: 0.2
+        width: 17rem
+        height: 3rem
+        &:hover
+          filter: grayscale(0)
+          opacity: 1
+      &.cmc
+        background-image: url('../img/CMC.svg')
+        filter: grayscale(1)
+        opacity: 0.6
+        width: 15rem
+        height: 3.8rem
+        &:hover
+          filter: grayscale(0)
+          opacity: 1
+      &.cg
+        background-image: url('../img/CG.svg')
+        filter: grayscale(1)
+        opacity: 0.2
+        width: 12rem
+        height: 3.4rem
+        &:hover
+          filter: grayscale(0)
+          opacity: 1
+      &.cc
+        background-image: url('../img/CC.svg')
+        filter: grayscale(1)
+        opacity: 0.2
+        width: 18rem
+        height: 2.3rem
+        &:hover
+          filter: grayscale(0)
+          opacity: 1
+  &__buttons
+    display: flex
+    align-items: center
+    gap: 2rem
+    margin-bottom: 6rem
+  &__button
+    display: flex
+    align-items: center
+    gap: 1.4rem
+    text-decoration: none
+    color: white
+    font-size: $font-size-small
+    font-weight: 500
+    border: none
+    i
+      display: flex
+      align-items: center
+      justify-content: center
+      font-size: 1rem
+      width: 2.7rem
+      height: 2.7rem
+      border-radius: 50%
+      background: linear-gradient(210deg, #6BFF85, #1471DD, #980C71)
+      color: $black
+  @media screen and (min-width: $medium-screen)
+    &__brands
+      gap: 3rem
+      img
+        max-width: 100%
+        gap: 6rem
+    &__button
+      font-size: $font-size-xlarge
+      i
+        font-size: 1.5rem
+        width: 4.8rem
+        height: 4.8rem
+    &__buttons
+      gap: 4rem
+
 .section
   &.bug
     display: flex
@@ -406,91 +571,6 @@
 
     @media screen and (min-width: $xlarge-screen)
       padding: 5rem 6rem 3rem 6rem
-
-  &.downloads
-    display: flex
-    flex-direction: column
-    border-radius: 2.7rem
-    background: $card-bg
-    padding: 3rem
-    .content
-      display: flex
-      flex-direction: column
-      gap: 2rem
-      a
-        align-self: flex-start
-        span
-          display: flex
-          align-items: center
-          gap: 7px
-          padding: 1.2rem 2.8rem
-          background: $card-bg
-          background-size: 0%
-        img
-          height: 3rem
-          width: auto
-        &.btn--gradient
-          padding: 1px
-          border: 0
-          background: linear-gradient(90deg,  transparent 50%, #005FE3 60%, #00FF00)
-          background-size: 300% 100%
-          background-position: 100% 0
-          &:hover span
-            background: linear-gradient(120deg, transparent 0%, transparent 100%)
-      &__title
-        display: flex
-        font-size: 2.4rem
-        gap: 2rem
-        img
-          width: auto
-          max-height: 4rem
-      &__buttons
-        display: flex
-        gap: 2rem
-        flex-wrap: wrap
-        .btn
-          i 
-            font-size: larger
-    .section__container
-      align-items: flex-start
-      gap: 0
-    h3
-      margin-bottom: 3rem
-      font-size: 3.5rem
-      line-height: 3.4rem
-      font-weight: 900
-      @include text-gradient(linear, white, #9A9A9A, 90deg)
-    p
-      font-size: 2rem
-      line-height: 2.5rem
-      margin-bottom: 5rem
-      color: #C5C5C5
-    a
-      font-size: 2.3rem
-      font-weight: 400
-      color: white
-      text-decoration: none
-      align-self: flex-end
-      display: flex
-      align-items: center
-      gap: 7px
-      sup
-        font-size: 11px
-        line-height: 13px
-        color: $green
-        top: -1.5rem
-      i
-        font-size: 1.4rem
-        left: 0
-        position: relative
-        transition: left 0.2s ease-in
-
-    @media screen and (min-width: $medium-screen)
-      .content
-        &__buttons
-          flex-direction: row
-    @media screen and (min-width: $xlarge-screen)
-      padding: 5rem 6rem 5rem 6rem
 
   &.cycle
     display: flex
@@ -600,7 +680,7 @@
       padding: 5rem 6rem 3rem 6rem
       p
         max-width: 100rem
-      
+
   &.points
     .section__container
       align-items: center
@@ -649,8 +729,6 @@
     position: relative
     display: flex
     align-items: center
-    img
-      max-width: 74rem
     .buttons
       display: flex
       gap: 2rem
@@ -669,20 +747,23 @@
           @include text-gradient(linear,$green,white,45deg)
     h3
       font-family: $secondary-font
-      font-size: 1.4rem
+      font-size: 1.5rem
       font-weight: 300
-      letter-spacing: 0.965em
-      text-transform: uppercase
-      text-shadow: 0 0 4px white
+      letter-spacing: 0.6em
+      margin-bottom: 2.4rem
     h2
       font-weight: 900
-      font-size: 3.6rem
+      font-size: 5rem
+      line-height: 1
+      margin-bottom: 1.4rem
+      max-width: 35rem
       @include text-gradient(linear, white, #9A9A9A, 45deg)
     p
       font-size: 1.6rem
-      font-weight: bold
-      text-align: center
-      margin-bottom: 3rem
+      font-weight: 400
+      color: $fade-white
+      margin-bottom: 5rem
+      max-width: 28rem
     h1
       position: relative
       font-family: $primary-font
@@ -704,7 +785,7 @@
 
     .bigTitle__content
       margin-left: -6rem
-    @media screen and (min-width: $small-screen)   
+    @media screen and (min-width: $small-screen)
       .bigTitle__content
         margin-left: -12rem
       h1
@@ -718,15 +799,29 @@
           --margin2Stop: -9rem
     @media screen and ( min-width: $medium-screen)
       .section__container
-        align-items: center
-    @media screen and ( min-width: $large-screen)   
+        align-items: flex-start
       h3
-        font-size: 2.5rem
+        font-size: 2rem
+        margin-bottom: 2rem
       h2
-        font-size: 6.8rem
+        font-size: 7rem
+        max-width: 48rem
+        line-height: 1
+        margin-bottom: 2rem
       p
-        font-size: 3.1rem
+        font-size: 2rem
         margin-bottom: 3rem
+        max-width: 58rem
+    @media screen and ( min-width: $large-screen)
+      h3
+        font-size: 2.3rem
+        margin-bottom: 4rem
+      h2
+        font-size: 7rem
+        margin-bottom: 4rem
+      p
+        font-size: 2.3rem
+        margin-bottom: 4rem
       .bigTitle__content
         margin-left: -18rem
       h1
@@ -741,7 +836,6 @@
         &:last-child
           left: 18rem
           margin-top: -14rem
-
 
   &.tags
     .simple-cards
@@ -771,7 +865,7 @@
             & > div
               border-top-left-radius: 1.5rem
               border-bottom-left-radius: 1.5rem
-            
+
     .cards
       position: relative
       width: 100%
@@ -929,7 +1023,7 @@
         max-width: 15%
       &--10
         max-width: 10%
-  
+
     @media screen and (min-width: $small-screen)
       .here
         margin-left: 3rem
@@ -996,7 +1090,7 @@
       .simple-cards
         border-left: 3px solid #343434
     @media screen and (min-width: $large-screen)
-      margin-bottom: 14rem
+      // margin-bottom: 14rem
 
   &.zenon
     .card-big
@@ -1008,7 +1102,7 @@
         background: linear-gradient(120deg, transparent 0%, transparent 50%, transparent 100%)
         background-size: 0%
         &:hover
-          background: linear-gradient(90deg,  transparent 20%, transparent 40%, $green 40%, #168F2B)
+          background: linear-gradient(90deg, transparent 20%, transparent 40%, $green 40%, #168F2B)
           background-size: 300% 100%
           background-position: 100% 0
         &:hover a i
@@ -1030,7 +1124,7 @@
         background: linear-gradient(120deg, transparent 0%, transparent 50%, transparent 100%)
         background-size: 0%
         &:hover
-          background: linear-gradient(90deg,  transparent 20%, transparent 40%, $magenta 40%, #C9006C)
+          background: linear-gradient(90deg, transparent 20%, transparent 40%, $magenta 40%, #C9006C)
           background-size: 300% 100%
           background-position: 100% 0
         &:hover a i
@@ -1048,7 +1142,7 @@
         background: linear-gradient(120deg, transparent 0%, transparent 50%, transparent 100%)
         background-size: 0%
         &:hover
-          background: linear-gradient(90deg,  transparent 20%, transparent 40%, $green 40%, #446AEF)
+          background: linear-gradient(90deg, transparent 20%, transparent 40%, $green 40%, #446AEF)
           background-size: 300% 100%
           background-position: 100% 0
         &:hover a i
@@ -1066,12 +1160,12 @@
         background: linear-gradient(120deg, transparent 0%, transparent 50%, transparent 100%)
         background-size: 0%
         &:hover
-          background: linear-gradient(90deg,  transparent 20%, transparent 40%, $green 40%, #F3BA2F)
+          background: linear-gradient(90deg, transparent 20%, transparent 40%, $green 40%, #F3BA2F)
           background-size: 300% 100%
           background-position: 100% 0
         &:hover a i
           @include text-gradient(linear,$green,#F3BA2F,45deg)
-        
+
         .card-big__wrapper
           padding: 3rem 3rem 2.5rem 3rem
         h3
@@ -1091,7 +1185,7 @@
         flex-direction: column
         gap: 2rem
 
-    @media screen and (min-width: $large-screen) 
+    @media screen and (min-width: $large-screen)
       margin-bottom: 9rem
       .cards-big
         gap: 3rem
@@ -1164,7 +1258,7 @@
         margin-top: -1px
         height: 2px
         width: 100%
-        background: linear-gradient(-45deg, $green, $black)  
+        background: linear-gradient(-45deg, $green, $black)
     p
       font-style: normal
       font-weight: 400
@@ -1213,7 +1307,7 @@
         margin-top: -1px
         height: 2px
         width: 100%
-        background: linear-gradient(45deg, $green, $black)  
+        background: linear-gradient(45deg, $green, $black)
     p
       font-style: normal
       font-weight: 400
@@ -1242,7 +1336,7 @@
         background: rgba(0,0,0,0.5)
       &:hover::before
         content: none
-        
+
       &::after
         content: ""
         width: 4rem
@@ -1259,7 +1353,7 @@
         background-repeat: no-repeat
         background-position: center center
 
-    @media screen and (min-width: $large-screen) 
+    @media screen and (min-width: $large-screen)
       .figure
         max-width: 46rem
       .mission
@@ -1296,7 +1390,7 @@
       line-height: 8.6rem
       &.znn-initials
         @include text-gradient(radial, $lite-green, $dark-green, ellipse at top)
-        
+
       &.qsr-initials
         @include text-gradient(radial, $lite-blue, $blue, ellipse at top)
 
@@ -1314,17 +1408,17 @@
         &:nth-child(3)
           order: -1
 
-    @media screen and (min-width: $large-screen) 
+    @media screen and (min-width: $large-screen)
       margin-top: 16rem
       margin-bottom: 7rem
       h2
         font-size: 4rem
         line-height: 4.6rem
-    @media screen and (min-width: $xlarge-screen) 
+    @media screen and (min-width: $xlarge-screen)
       h2
         font-size: 6rem
         line-height: 6.6rem
-    
+
   &.alphanet
     position: relative
     margin-top: 5rem
@@ -1366,7 +1460,7 @@
       text-transform: uppercase
       &.znn-initials
         @include text-gradient(radial, $lite-green, $dark-green, ellipse at top)
-        
+
       &.qsr-initials
         @include text-gradient(linear, $green, $blue, 45deg)
 
@@ -1382,7 +1476,7 @@
         &:nth-child(3)
           order: -1
 
-    @media screen and (min-width: $large-screen) 
+    @media screen and (min-width: $large-screen)
       margin-top: 16rem
       margin-bottom: 7rem
       .img
@@ -1395,7 +1489,7 @@
       h2
         font-size: 4rem
         line-height: 4.6rem
-    @media screen and (min-width: $xlarge-screen) 
+    @media screen and (min-width: $xlarge-screen)
       .section__top
         flex-direction: row
       h2
@@ -1403,12 +1497,13 @@
         line-height: 6.6rem
 
   &.zts
-    background-image: url('../img/ellipse.png')
+    // background-image: url('../img/ellipse.png')
     background-position: top center
     background-size: contain
     background-repeat: no-repeat
     .section__container
       align-items: center
+      gap: 2rem
     .zts
       &__column
         display: flex
@@ -1420,14 +1515,14 @@
           width: 100%
           max-width: 25rem
           flex-shrink: 0
-          border-color:#333333
+          border-color: #333333
     .content
       &.z
-        max-width: 20rem
+        max-width: 34rem
       &.t
-        max-width: 37rem
+        max-width: 39rem
       &.s
-        max-width: 25rem
+        max-width: 26rem
       i
         color: $green
         font-size: 2.2rem
@@ -1458,12 +1553,11 @@
         font-size: 10rem
         line-height: 10rem
         &.last
-          text-shadow:-3px 3px $lite-green, 4px 3px $lite-green, 3px -4px $lite-green, -3px -3px $lite-green
+          text-shadow: -3px 3px $lite-green, 4px 3px $lite-green, 3px -4px $lite-green, -3px -3px $lite-green
     .text-right
       flex: 1 0 35%
 
     @media screen and (min-width: $large-screen)
-      padding-top: 14rem
       .section__container
         align-items: flex-start
 
@@ -1550,7 +1644,7 @@
         p
           font-size: 2.2rem
           line-height: 2.8rem
-    @media screen and (min-width: $large-screen) 
+    @media screen and (min-width: $large-screen)
       .big-cards
         flex-direction: row
         gap: 3rem
@@ -1569,7 +1663,7 @@
           &.text
             margin-bottom: 3.5rem
 
-    @media screen and (min-width: $xlarge-screen) 
+    @media screen and (min-width: $xlarge-screen)
       .big-cards
         &__row
           flex-direction: row
@@ -1594,6 +1688,7 @@
     &.zts
       .letter
         order: initial
+        max-height: 175px
   @media screen and ( min-width: $xlarge-screen)
     &.mission
       margin-bottom: 14rem
@@ -1634,9 +1729,8 @@
         span
           font-size: 16rem
           line-height: 16rem
-    
-  @media screen and ( min-width: $xxlarge-screen)
 
+  @media screen and ( min-width: $xxlarge-screen)
 
 .footer
   margin: 2rem 0
@@ -1663,13 +1757,15 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ff0000', endColorstr='#00ff0000',GradientType=1 )
   &__copyright
     display: flex
+    flex-direction: column
     justify-content: space-between
     align-items: center
+    gap: 1rem
     margin-bottom: 3rem
     p
       font-size: 2rem
       line-height: 2.5rem
-      color: #676767
+      color: white
   &__column
     flex: 1 0 25%
     width: 100%
@@ -1695,15 +1791,17 @@
     padding-left: 0
     li
       margin-bottom: 2rem
-      a
+      a, button
+        border: none
+        margin: 0
+        padding: 0
         text-decoration: none
         font-size: 2.2rem
         line-height: 2.8rem
-        margin-bottom: 1.8rem
         font-weight: 400
-        color: #5C5C5C
+        color: $fade-white
         &:hover
-          color: $fade-white
+          color: white
         &:hover i
           color: $green
           left: 0.5rem
@@ -1726,8 +1824,10 @@
     gap: 1.5rem
     button
       width: 100%
-  @media screen and ( min-width: $medium-screen )
+  @media screen and (min-width: $medium-screen)
     gap: 5rem
+    &__copyright
+      flex-direction: row
     &__group
       flex-direction: row
       max-width: 100%
@@ -1750,7 +1850,7 @@
       padding: 0rem 0rem 3rem 6rem
     &--buttons
       gap: 3rem
-  
+
 .new-tag
   font-weight: 700
   color: white
@@ -1767,3 +1867,1747 @@
   align-items: flex-end
   justify-content: center
   padding-bottom: 1rem
+
+.timer
+  &__text
+    margin-bottom: 2rem
+    // a
+    //   padding-left: 0
+    //   padding-right: 0
+    h3
+      font-size: 2.4rem
+      font-weight: 700
+      margin-bottom: 2.4rem
+    p
+      font-size: 2rem
+      color: $fade-white
+      margin-bottom: 2rem
+      max-width: 48rem
+      .green
+        color: $green
+      .blue
+        color: $blue
+  &__time
+    display: flex
+    gap: 2rem
+    .time
+      display: flex
+      flex-direction: column
+      background: $black
+      border: 1px solid $card-bg
+      border-radius: 1rem
+      padding: 1rem 2rem
+      margin-bottom: 3rem
+      &--hours
+        .number::after
+          background: linear-gradient(90deg, $green, $blue)
+      &--minutes
+        .number::after
+          background: linear-gradient(90deg, $blue, $magenta)
+      &--seconds
+        .number::after
+          background: linear-gradient(90deg, $magenta, white)
+      .number
+        font-size: 4rem
+        font-weight: 900
+        font-family: $secondary-font
+        @include text-gradient(linear, white, $fade-white, 180deg)
+        &::after
+          content: ''
+          display: block
+          width: 100%
+          height: 2px
+      .text
+        font-size: 1.5rem
+        font-weight: 900
+        text-transform: uppercase
+        align-self: flex-end
+        margin-top: 1rem
+
+  @media screen and (min-width: $medium-screen)
+    &__text
+      h3
+        font-size: 3.8rem
+      p
+        font-size: 2.3rem
+        margin-bottom: 3rem
+    &__time
+      gap: 3rem
+    .time
+      padding: 1.5rem 2.5rem
+      margin-bottom: 0
+      .number
+        font-size: 6rem
+
+.back-title
+  position: absolute
+  top: 0
+  font-family: $presicav-font
+  // letter-spacing: 1rem
+  font-weight: 900
+  font-size: 6rem
+  text-align: center
+  text-transform: uppercase
+  transition: background-color 0.5s ease-in-out
+  @include text-gradient(linear, $darkgray, rgba(4,4,4,0.6), 180deg)
+  &.green
+    @include text-gradient(linear, $soft-gray, #000, 180deg)
+
+  @media screen and (min-width: $medium-screen)
+    font-size: 12rem
+  @media screen and (min-width: $large-screen)
+    // letter-spacing: 4rem
+    font-size: 14rem
+  @media screen and (min-width: $xlarge-screen)
+    font-size: 18rem
+
+@keyframes pulseSun
+  0%
+    transform: scale(0.75)
+
+  70%
+    transform: scale(1)
+
+  100%
+    transform: scale(0.75)
+
+.milestones
+  padding: 5rem 0 2.5rem
+  width: 100%
+  display: flex
+  align-items: flex-end
+  justify-content: center
+  &__green
+    background-image: url(../img/sun.svg)
+    width: 10rem
+    height: 1.5rem
+    background-size: contain
+    background-repeat: no-repeat
+    background-position: center
+    transform: scale(1)
+    animation: pulseSun 2s infinite
+  &__title
+    display: flex
+    align-items: center
+    justify-content: space-between
+    text-align: center
+    z-index: 1
+    span
+      font-size: 1.8rem
+    h2
+      font-size: 2rem
+      font-weight: 700
+  @media screen and (min-width: $medium-screen)
+    padding: 10rem 0 5rem
+    &__green
+      width: 30rem
+      height: 6rem
+    &__title
+      span
+        font-size: 3.8rem
+      h2
+        font-size: 3.4rem
+  @media screen and (min-width: $medium-screen)
+    padding: 12rem 0 5rem
+
+.encrypt-cards
+  display: flex
+  align-items: stretch
+  justify-content: space-between
+  flex-direction: column
+  gap: 2rem
+  margin-top: 6rem
+  .encrypt-card
+    flex: 1 0 100%
+    max-width: 100%
+    height: 37rem
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    background: $card-bg
+    border-radius: 2.7rem
+    padding: 3rem 2rem 3rem 2rem
+    h4
+      font-size: 2rem
+
+.future
+  h2
+    font-family: $secondary-font
+    font-weight: 900
+    font-size: 3rem
+    line-height: 1
+    text-align: center
+    margin-bottom: 3rem
+    @include text-gradient(linear, white, #9A9A9A, 90deg)
+  h4
+    font-family: $secondary-font
+    font-size: 2rem
+    text-align: center
+    font-weight: 100
+  .buttons
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-top: 10rem
+
+.seeding
+  &__icon
+    display: flex
+    height: 11rem
+    margin-bottom: 1rem
+    justify-content: center
+    img
+      height: 100%
+      width: 11rem
+  &__column
+    flex: 1 0 80%
+    max-width: 80%
+    margin-bottom: 5rem
+    text-align: center
+    h3
+      font-size: 2rem
+      line-height: 3rem
+      margin-bottom: 3rem
+    p
+      font-size: 2rem
+      line-height: 2.4rem
+
+@media screen and (min-width: $large-screen)
+  .encrypt-cards
+    align-items: center
+    flex-direction: row
+    .encrypt-card
+      flex: 1 0 32rem
+      max-width: 32rem
+      h4
+        font-size: 3rem
+  .future
+    h2
+      font-size: 5rem
+      margin-bottom: 6rem
+    h4
+      font-size: 3rem
+
+  .seeding
+    &__icon
+      justify-content: flex-start
+    &__column
+      flex: 1 0 25%
+      max-width: 25rem
+      text-align: left
+      margin-bottom: 0
+      h3
+        font-size: 3rem
+        line-height: 4rem
+      p
+        font-size: 2.2rem
+        line-height: 2.8rem
+
+.times
+  width: 100%
+  padding: 15rem 0
+  &__wrapper
+    display: flex
+    list-style-type: none
+    align-items: center
+    padding: 0
+    li
+      position: relative
+      min-width: 0
+      flex: 1 1 auto
+  &__empty
+    height: 40rem
+  &__center
+    font-size: 1.6rem
+    text-transform: uppercase
+    position: absolute
+    display: block
+    top: 50%
+    bottom: 50%
+    margin-top: -1rem
+    left: 50%
+    right: 50%
+    width: 14rem
+    height: 2rem
+    margin-left: -7rem
+  &__label
+    font-family: $secondary-font
+    font-size: 13px
+    position: absolute
+    display: block
+    left: 50%
+    right: 50%
+    margin-left: -9rem
+    text-align: center
+    &--long
+      &::after
+        height: 30rem!important
+    &--left-full
+      left: 100%!important
+    &--left-90
+      left: 90%!important
+    &--left-80
+      left: 80%!important
+    &--left-70
+      left: 70%!important
+    &--left-60
+      left: 60%!important
+    &--left-50
+      left: 50%!important
+    &--left-40
+      left: 40%!important
+    &--left-30
+      left: 30%!important
+    &--left-20
+      left: 20%!important
+    &--left-10
+      left: 10%!important
+    &--small
+      &::after
+        bottom: 1.5rem!important
+    &--mleft-0
+      margin-left: 0
+    &--mleft-10
+      margin-left: -10%
+    &--mleft-20
+      margin-left: -20%
+    &--mleft-30
+      margin-left: -30%
+    &--mleft-40
+      margin-left: -40%
+    &--mleft-50
+      margin-left: -50%
+    &--mleft-60
+      margin-left: -60%
+    &--mleft-70
+      margin-left: -70%
+    &--mleft-80
+      margin-left: -80%
+    &--mleft-90
+      margin-left: -90%
+    &--hidden
+      visibility: hidden
+    &--18rem
+      width: 18rem
+    &--12rem
+      width: 12rem
+    &--10rem
+      width: 10rem
+    &--100
+      width: 100%
+    &--90
+      width: 90%
+    &--80
+      width: 80%
+    &--70
+      width: 70%
+    &--60
+      width: 60%
+    &--50
+      width: 50%
+    &--40
+      width: 40%
+    &--30
+      width: 30%
+    &--20
+      width: 20%
+    &--10
+      width: 10%
+    &--top
+      z-index: 99
+      top: 2rem
+      &--5
+        top: -5rem
+      &--10
+        top: -10rem
+      &--15
+        top: -15rem
+      &--20
+        top: -20rem
+      &:nth-child(even)
+        left: 60%
+      &::before
+        display: block
+        // content: ''
+        width: 100%
+        height: 0.5px
+        background: #8D8D8D
+        position: absolute
+        bottom: 0
+      &::after
+        display: block
+        content: ''
+        width: 0.5px
+        height: 50%
+        background: linear-gradient(#8D8D8D, $dark)
+        position: absolute
+        height: 15rem
+        left: 50%
+        right: 50%
+        top: 1.7rem
+    &--bottom
+      z-index: 99
+      bottom: 2rem
+      &--5
+        bottom: -5rem
+      &--10
+        bottom: -10rem
+      &--15
+        bottom: -15rem
+      &--20
+        bottom: -20rem
+      &:nth-child(even)
+        left: 60%
+      &::before
+        display: block
+        // content: ''
+        width: 100%
+        height: 0.5px
+        background: #8D8D8D
+        position: absolute
+        top: 0
+      &::after
+        display: block
+        content: ''
+        width: 0.5px
+        height: 50%
+        background: linear-gradient($dark, #8D8D8D)
+        position: absolute
+        height: 15rem
+        left: 50%
+        right: 50%
+        bottom: 3.5rem
+
+  @media screen and (min-width: $large-screen)
+    &__center
+      font-size: 2rem
+
+.protocol
+  position: relative
+  padding: 6rem 0 0
+  .back-title
+    left: 50%
+    margin-left: -11rem
+  &__tab
+    padding: 2.5rem 2rem 2rem
+  &__title
+    z-index: 1
+    position: relative
+    margin-bottom: 8rem
+    h2
+      font-size: 2.4rem
+      font-weight: 700
+      text-align: center
+      margin-bottom: 2rem
+    p
+      color: $fade-white
+      text-align: center
+      font-size: 1.8rem
+      max-width: 82rem
+      margin: 0 auto
+  &__container
+    display: grid
+    grid-template-columns: 100%
+    overflow: hidden
+    gap: 5rem
+    &--inverse
+      grid-template-columns: 100%
+      gap: 5rem
+      .protocol
+        &__right
+          &::after
+            content: none
+        &__left
+          position: relative
+          display: flex
+          align-items: center
+          &::before
+            content: none
+            background: linear-gradient(90deg, $dark 0%, rgba(21, 21, 21, 0) 100%)
+            position: absolute
+            height: 100%
+            width: 30%
+            left: 0
+            top: 0
+            z-index: 1
+        &__stack
+          right: auto
+          left: 0
+        &__row
+          justify-content: flex-start
+      strong
+        justify-content: flex-end
+  .right-title
+    font-size: 4.2rem
+    font-weight: 700
+    margin-bottom: 3rem
+  .right-text
+    position: relative
+    color: $almost-white
+    font-size: 1.3rem
+    margin-bottom: 3rem
+    .backdrop
+      position: absolute
+      font-weight: bold
+      opacity: 0.2
+      font-size: 2rem
+      top: 1.5rem
+      &--yellow
+        color: #F3BA2F
+    &--white
+      border-left: 3px solid white
+      padding-left: 3rem
+    &--yellow
+      border-left: 3px solid #F3BA2F
+      padding-left: 3rem
+    &--green
+      border-left: 3px solid #12FF3C
+      padding-left: 3rem
+    &--sky
+      border-left: 3px solid #02E4E4
+      padding-left: 3rem
+    &--magenta
+      border-left: 3px solid #F91690
+      padding-left: 3rem
+    &--blue
+      border-left: 3px solid #446AEF
+      padding-left: 3rem
+
+  strong
+    display: flex
+    align-items: center
+    gap: 2rem
+    font-size: 2.4rem
+    font-weight: 900
+    margin-bottom: 3rem
+    img
+      width: 3.8rem
+      height: 3.8rem
+  &__right
+    position: relative
+    &::after
+      content: ""
+      background: linear-gradient(270deg, black 20.54%, rgba(21, 21, 21, 0) 100%)
+      position: absolute
+      height: 100%
+      width: 50%
+      right: 0
+      top: 0
+      z-index: 1
+  &__stack
+    display: flex
+    flex-direction: column
+    position: relative
+    width: 100%
+    right: -25%
+  &__row
+    display: flex
+    justify-content: flex-end
+    gap: 1.3rem
+    margin-bottom: 1.6rem
+  &__card
+    width: 100%
+    cursor: pointer
+    flex-grow: 0
+    flex-shrink: 0
+    font-size: 1.4rem
+    padding: 2px
+    font-weight: 500
+    color: #616161
+    border-radius: 1.5rem
+    background: linear-gradient(120deg, transparent 0%, transparent 50%, transparent 100%)
+    background-size: 0%
+    .inner
+      border: 1px solid transparent
+      background: #2D2D2D
+      color: white
+      backdrop-filter: blur(47.5px)
+      font-size: 1rem
+      padding: 1rem 1.5rem
+      border-radius: 1rem
+      order: 1
+    &.active
+      background: linear-gradient(90deg, white 40%, white)
+      color: $almost-white
+      .protocol__card--wrapper--last::after
+        left: 5px
+        transform: scale(1.5)
+    &--yellow
+      .inner
+        color: #F3BA2F
+        background: #28200D
+      &.active
+        background: linear-gradient(90deg, #F3BA2F 40%, #F3BA2F)
+        .protocol__card--wrapper--last::after
+          color: #F3BA2F
+    &--green
+      .inner
+        color: #12FF3C
+        background: #0C3313
+      &.active
+        background: linear-gradient(90deg, #12FF3C 40%, #12FF3C)
+        .protocol__card--wrapper--last::after
+          color: #12FF3C
+    &--sky
+      .inner
+        color: #02E4E4
+        background: #0D2528
+      &.active
+        background: linear-gradient(90deg, #02E4E4 40%, #02E4E4)
+        .protocol__card--wrapper--last::after
+          color: #02E4E4
+    &--magenta
+      .inner
+        color: #F91690
+        background: #3A0B24
+      &.active
+        background: linear-gradient(90deg, #F91690 40%, #F91690)
+        .protocol__card--wrapper--last::after
+          color: #F91690
+    &--blue
+      .inner
+        color: #446AEF
+        background: #0B1B57
+      &.active
+        background: linear-gradient(90deg, #446AEF 40%, #446AEF)
+        .protocol__card--wrapper--last::after
+          color: #446AEF
+
+    &--lg
+      display: none
+
+    &--wrapper
+      border-radius: 1.5rem
+      background: #171717
+      padding: 1rem 1rem 1rem 3rem
+      display: flex
+      align-items: center
+      justify-content: space-between
+      gap: 1.5rem
+      height: 100%
+      &--no-padding
+        padding: 2rem 5px
+      &--last::after
+        content: "\0003E"
+        position: relative
+        display: inline-block
+        left: 0
+        transition: left 0.3s ease-in, transform 0.3s ease-in
+        margin-right: auto
+        // margin-left: 2rem
+
+  @media screen and (min-width: $medium-screen)
+    padding: 10rem 0 0
+    .back-title
+      margin-left: -22rem
+  @media screen and (min-width: $large-screen)
+    padding: 12rem 0 10rem
+    &__wrapper
+      min-height: 7rem
+      justify-content: flex-start
+    &__card
+      width: auto
+      font-size: 2.3rem
+      .inner
+        font-size: 1.8rem
+        padding: 1.5rem 2rem
+        order: 0
+      &--lg
+        display: block
+      &--wrapper
+        padding: 1rem 3rem
+    &__container
+      &--inverse
+        .protocol
+          &__left
+            &::before
+              content: ""
+    .back-title
+      margin-left: -25rem
+    &__title
+      h2
+        font-size: 3.8rem
+      p
+        font-size: 2.3rem
+    .right-title
+      font-size: 5.5rem
+    .right-text
+      font-size: 2.3rem
+      margin-bottom: 6rem
+      .backdrop
+        font-size: 3rem
+        top: 2rem
+
+    strong
+      font-size: 2.8rem
+    &__stack
+      right: -15%
+    &__container
+      grid-template-columns: 41% auto
+      gap: 0
+      &--inverse
+        grid-template-columns: auto 41%
+        gap: 0
+    &__card
+      font-size: 2.3rem
+  @media screen and (min-width: $xlarge-screen)
+    padding: 15rem 0 10rem
+    .back-title
+      margin-left: -34rem
+
+.whitepaper
+  &__cards
+    display: flex
+    flex-direction: column
+    gap: 2.5rem
+  &__card
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    text-decoration: none
+    gap: 1.6rem
+    padding: 3rem 4rem 2rem 4rem
+    background: radial-gradient(95.93% 95.93% at 17.44% 15.12%, rgba(37, 37, 37, 0.62) 0%, rgba(26, 26, 26, 0.62) 100%)
+    border: 1px solid
+    border-image-source: linear-gradient(153.54deg, rgba(102, 102, 102, 0.17) -16.3%, rgba(48, 48, 48, 0.17) 83.39%)
+    border-radius: 1rem
+    flex: 1 0 49%
+    &:hover i
+      color: $green
+      left: 0.5rem
+    &.soon
+      border: 1px solid
+      border-image-source: linear-gradient(153.54deg, rgba(102, 102, 102, 0.17) -16.3%, rgba(48, 48, 48, 0.17) 83.39%)
+      background: radial-gradient(95.93% 95.93% at 17.44% 15.12%, rgba(37, 37, 37, 0.22) 0%, rgba(26, 26, 26, 0.22) 100%)
+      color: rgba(97, 97, 97, 1)
+      a
+        color: #616161!important
+      small
+        color: #3BDA57
+        font-size: 11px
+        text-transform: uppercase
+        padding: 9px
+        border-radius: 7px
+        background: rgba(18, 255, 60, 0.1)
+    img
+      height: 4rem
+      width: auto
+  h4
+    font-size: 3rem
+    font-weight: 500
+  button
+    font-size: 1.6rem
+    font-weight: 400
+    border: none
+    color: white
+    text-decoration: none
+    display: flex
+    align-items: center
+    gap: 7px
+    padding: 0
+    img
+      height: 2rem
+      width: auto
+    sup
+      font-size: 11px
+      line-height: 13px
+      color: $green
+      top: -1.5rem
+    i
+      font-size: 1.4rem
+      left: 0
+      position: relative
+      transition: left 0.2s ease-in
+
+  @media screen and (min-width: $large-screen)
+    &__cards
+      flex-direction: row
+    &__card
+      gap: 3rem
+      padding: 5rem 7.5rem 3.5rem 7.5rem
+    button
+      font-size: 2.3rem
+
+.network
+  position: relative
+  padding: 6rem 0 0
+  .back-title
+    left: 50%
+    font-size: 5rem
+    margin-left: -18rem
+  &__graph
+    display: none
+  &__content
+    max-width: 120rem
+    margin: 0 auto 5rem auto
+    img
+      width: 100%
+  &__cards
+    display: flex
+    flex-wrap: wrap
+    gap: 6px
+    justify-content: center
+  &__card
+    display: flex
+    flex-direction: column
+    background: $card-bg
+    border-radius: 1rem
+    padding: 2rem 1rem
+    align-items: center
+    width: 13rem
+    img
+      width: 4.5rem
+      height: auto
+      margin-bottom: 1rem
+    h4
+      font-size: 1.3rem
+      text-transform: capitalize
+      color: $green
+      font-weight: 700
+    p
+      font-size: 1.5rem
+      font-weight: 700
+      margin-bottom: 1rem
+      @include text-gradient(linear, white, #9A9A9A, 90deg)
+    small
+      font-size: 1rem
+      color: #6D6D6D
+  &__title
+    z-index: 1
+    position: relative
+    h2
+      font-size: 2.4rem
+      font-weight: 700
+      text-align: center
+      margin-bottom: 2rem
+    p
+      color: $fade-white
+      text-align: center
+      font-size: 1.8rem
+      max-width: 70rem
+      margin: 0 auto
+  &__buttons
+    display: none
+    justify-content: space-between
+  &__button
+    display: flex
+    align-items: center
+    gap: 2rem
+    text-decoration: none
+    color: white
+    font-size: 2.5rem
+    font-weight: 500
+    i
+      display: flex
+      align-items: center
+      justify-content: center
+      font-size: 1.5rem
+      width: 4.8rem
+      height: 4.8rem
+      border-radius: 50%
+      background: linear-gradient(210deg, #6BFF85, #1471DD, #980C71)
+
+  @media screen and (min-width: $medium-screen)
+    padding: 10rem 0 0
+    &__graph
+      display: block
+    &__cards
+      display: none
+    &__buttons
+      display: flex
+    .back-title
+      font-size: 10rem
+      margin-left: -34rem
+  @media screen and (min-width: $large-screen)
+    padding: 12rem 0 0
+    .back-title
+      font-size: 14rem
+      margin-left: -48rem
+    &__title
+      h2
+        font-size: 3.8rem
+      p
+        font-size: 2.3rem
+  @media screen and (min-width: $xlarge-screen)
+    padding: 15rem 0 0
+    .back-title
+      font-size: 18rem
+      margin-left: -60rem
+
+.elipse
+  background-image: url('../img/gradient.svg')
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: 100%
+  width: 98rem
+  height: 68rem
+  position: absolute
+  top: 50%
+  left: 50%
+  margin-top: -60rem
+  margin-left: -15rem
+  z-index: 1
+
+.join
+  position: relative
+  padding: 5rem 0 5rem
+  &-content
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+    position: relative
+    z-index: 2
+    flex-direction: column
+    &--full
+      flex: 1 0 auto
+    p
+      font-size: 2rem
+      font-weight: 400
+      color: $fade-white
+      max-width: 36rem
+      margin-bottom: 4rem
+    &__buttons
+      display: flex
+      flex-direction: column
+      align-self: center
+      gap: 5rem
+    &__left
+      display: flex
+      flex-direction: column
+      align-self: center
+      text-align: center
+      a
+        justify-content: center
+        margin-bottom: 4rem
+      img
+        max-width: 100%
+    &__right
+      display: flex
+      flex-direction: column
+      align-self: center
+      a
+        margin-bottom: 4rem
+      img
+        max-width: 100%
+      &--reverse
+        align-items: center
+        order: -1
+        text-align: center
+        h3,p,a
+          text-align: center
+          justify-content: center
+    &__title
+      font-size: 2rem
+      font-weight: 700
+      max-width: 48rem
+      margin-bottom: 5rem
+      margin-top: 4rem
+      text-align: center
+    &__percentages
+      display: flex
+      flex-wrap: wrap
+      gap: 7rem
+      max-width: 48rem
+      margin-top: 4rem
+      justify-content: center
+      margin-bottom: 6rem
+      h4
+        flex-shrink: 0
+        font-size: 2.8rem
+        font-weight: 700
+        color: $green
+        margin-bottom: 3rem
+        small
+          display: block
+          font-size: 1.8rem
+          color: white
+          font-weight: 400
+  .back-title
+    left: 50%
+    margin-left: -20rem
+  &__title
+    z-index: 1
+    position: relative
+    h2
+      font-size: 2.4rem
+      font-weight: 700
+      text-align: center
+      margin-bottom: 2rem
+    p
+      color: $fade-white
+      text-align: center
+      font-size: 1.8rem
+      max-width: 70rem
+      margin: 0 auto
+  &__subtitle
+    font-size: 2.4rem
+    font-weight: 700
+    text-align: center
+    margin-top: 10rem
+  &__columns
+    font-family: $presicav-font
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    gap: 3rem
+    margin-top: 3rem
+  &__column
+    display: flex
+    flex-direction: column
+    padding-top: 3rem
+    flex: 1 0 auto
+    &--end
+      align-items: flex-end
+      justify-content: flex-end
+    &-title
+      display: flex
+      flex-direction: column
+      text-align: center
+      font-size: 2rem!important
+      &::after
+        content: ''
+        margin-top: 1rem
+        margin-bottom: 3.5rem
+        width: 100%
+        height: 6px
+        border-radius: 2rem
+        background: radial-gradient(106.52% 465.23% at -3.12% 49.44%, #3CFF5E 0%, #0058BF 48.78%, #F91690 94.1%)
+    h4
+      font-size: 1.9rem
+      font-weight: 900
+      color: #12FF3C
+      font-family: $presicav-font
+      &:last-child
+        margin-top: 2rem
+        color: #446AEF
+    span
+      font-size: 1.8rem
+      font-weight: 900
+      text-transform: uppercase
+    span:nth-child(2)
+      margin-bottom: 2rem
+      color: #12FF3C
+    span:nth-child(3)
+      color: #446AEF
+    &--90
+      max-width: 90%
+      width: 90%
+    &--70
+      max-width: 70%
+      width: 70%
+    &--60
+      max-width: 60%
+      width: 60%
+    &--50
+      max-width: 50%
+      width: 50%
+    &--40
+      max-width: 40%
+      width: 40%
+    &--30
+      max-width: 30%
+      width: 30%
+    &--20
+      max-width: 20%
+      width: 20%
+    &--10
+      max-width: 10%
+      width: 10%
+
+  @media screen and (min-width: $medium-screen)
+    padding: 8rem 0 5rem
+    h2
+      font-size: 3.8rem
+    p
+      font-size: 1.8rem
+      max-width: 42rem
+    .back-title
+      margin-left: -35rem
+      font-size: 10rem
+    &__subtitle
+      font-size: 3.8rem
+      margin-top: 2rem
+    &-content
+      flex-direction: row
+      &__buttons
+        align-self: flex-start
+      p
+        font-size: 2rem
+        max-width: 42rem
+      &__title
+        margin-top: 2rem
+      &__buttons
+        flex-direction: row
+      &__left
+        align-items: flex-start
+        text-align: left
+        a
+          justify-content: flex-start
+      &__right
+        &--reverse
+          align-items: flex-end
+          text-align: right
+          order: 0
+          h3,p,a
+            text-align: right
+            justify-content: flex-end
+      &__title
+        font-size: 4.7rem
+        margin-top: 0
+        text-align: left
+      &__percentages
+        justify-content: flex-start
+
+  @media screen and (min-width: $large-screen)
+    &-content
+      margin-bottom: 5rem
+      p
+        margin-bottom: 6rem
+      &__title
+        margin-bottom: 9rem
+    .back-title
+      margin-left: -34rem
+    &__columns
+      flex-direction: row
+      align-items: flex-end
+      margin-top: 7rem
+    &__column
+      &--90
+        width: auto
+      &--70
+        width: auto
+      &--60
+        width: auto
+      &--50
+        width: auto
+      &--40
+        width: auto
+      &--30
+        width: auto
+      &--20
+        width: auto
+      &--10
+        width: auto
+      span:nth-child(2)
+        color: white
+      span:nth-child(3)
+        color: white
+
+  @media screen and (min-width: $xlarge-screen)
+    padding: 15rem 0 10rem
+    .back-title
+      margin-left: -55rem
+      font-size: 16rem
+
+.trade
+  position: relative
+  padding: 5rem 0 5rem
+  display: flex
+  flex-direction: column
+  .back-title
+    font-size: 4rem
+    left: 50%
+    margin-left: -15rem
+    top: 1rem
+  &__title
+    z-index: 1
+    position: relative
+    h2
+      font-size: 2.4rem
+      font-weight: 700
+      text-align: center
+      margin-bottom: 2rem
+    p
+      color: $fade-white
+      text-align: center
+      font-size: 1.8rem
+      max-width: 95rem
+      margin: 0 auto
+  &__buttons
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+    gap: 2rem
+    margin: 3rem auto 5rem
+  &__columns
+    display: flex
+    flex-wrap: wrap
+    gap: 3rem
+    margin: 6rem 0
+  &__column
+    display: flex
+    gap: 1.5rem
+    flex: 1 1 auto
+  &__card
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 15rem
+    width: 15rem
+    border: 1px solid #303030
+    border-radius: 1rem
+    background: radial-gradient(95.93% 95.93% at 17.44% 15.12%, rgba(37, 37, 37, 0.62) 0%, rgba(26, 26, 26, 0.62) 100%)
+    padding: 3rem
+    &:hover
+      border: 1px solid #878787
+  &__text
+    display: flex
+    flex-direction: column
+    h3
+      display: flex
+      align-items: center
+      justify-content: space-between
+      line-height: 1
+      gap: 1rem
+      font-size: 3.2rem
+      font-weight: 700
+      margin-bottom: 1.5rem
+      span
+        color: #3BDA57
+        font-size: 11px
+        text-transform: uppercase
+        padding: 8px 10px
+        border-radius: 7px
+        background: rgba(18, 255, 60, 0.1)
+    p
+      color: #A4A4A4
+      font-size: 15px
+      line-height: 1.2
+      margin-bottom: 2rem
+  &__list
+    list-style-type: none
+    padding: 0
+    margin: 0
+    display: flex
+    gap: 6px
+    margin-top: auto
+    li
+      border-radius: 8px
+      &:first-child
+        border: 1px solid $green
+      &:last-child
+        border: 1px solid $blue
+      &.disabled
+        border: 1px solid #4E4E4E
+        a
+          pointer-events: none
+          color: #4E4E4E
+      a
+        display: flex
+        align-items: center
+        justify-content: center
+        gap: 5px
+        font-size: 13px
+        color: white
+        text-decoration: none
+        padding: 8px 16px
+        i
+          font-size: 10px
+  &__tech-list
+    list-style-type: none
+    padding: 0
+    margin: 0
+    display: flex
+    gap: 5px
+    margin-bottom: 15px
+    li
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: 4px
+      border-radius: 6rem
+      border: 0.5px solid #383838
+      background: #1E1E1E
+      color: white
+      font-size: 1rem
+      padding: 5px 15px
+      &.navy
+        background: #181A2E
+        border: 0.5px solid #2E3252
+      &.blue
+        background: #12184B
+        border: 0.5px solid #6A79FF
+      &.yellow
+        background: #4E3905
+        border: 0.5px solid #F0B90B
+      &.gold
+        background: #452600
+        border: 0.5px solid #F7931A
+      &.purple
+        background: #1B0831
+        border: 0.5px solid #6213B1
+      &.red
+        background: #410F0F
+        border: 0.5px solid #E84142
+
+  @media screen and (min-width: $medium-screen)
+    padding: 8rem 0 0
+    &__title
+      h2
+        font-size: 3.8rem
+    .back-title
+      font-size: 8rem
+      margin-left: -30rem
+
+  @media screen and (min-width: $large-screen)
+    padding: 10rem 0 0
+    &__column
+      flex: 1 1 40rem
+      max-width: 42rem
+    &__columns
+      margin: 10rem 0
+      gap: 4rem
+    .back-title
+      font-size: 10rem
+      margin-left: -38rem
+    &__bottom
+      max-width: 100%
+    &__button
+      width: auto
+    &__buttons
+      flex-direction: row
+    &__title
+      h2
+        font-size: 3.8rem
+      p
+        font-size: 2.3rem
+        margin: 4rem auto 0
+  @media screen and (min-width: $xlarge-screen)
+    .back-title
+      font-size: 12rem
+      margin-left: -45rem
+
+  @media screen and (min-width: $xxxlarge-screen)
+    &__columns
+      gap: 10rem
+
+.downloads
+  position: relative
+  padding: 5rem 0 5rem
+  display: flex
+  flex-direction: column
+  &__columns
+    display: flex
+    margin-top: 4rem
+    flex-direction: column
+  &__column
+    display: flex
+    flex-direction: column
+    align-items: center
+    flex: 1 1 24rem
+    sup
+      color: #3BDA57
+      font-size: 7.5px
+      text-transform: uppercase
+      padding: 7px 9px
+      border-radius: 7px
+      background: rgba(18, 255, 60, 0.1)
+      line-height: 13px
+      top: -2.5rem
+      right: -1rem
+    h3
+      font-size: 2.4rem
+      font-weight: 700
+      margin-bottom: 2.5rem
+    ul
+      padding: 0
+      list-style-type: none
+      display: flex
+      gap: 1.5rem
+      margin-bottom: 2.5rem
+      li
+        height: 3.5rem
+        img
+          height: 3.5rem
+          width: 3.5rem
+        i
+          font-size: 3.5rem
+  .gradient-btn,
+  .btn--simple
+    display: inline-block
+    text-align: center
+    font-size: 1.6rem
+    font-weight: 500
+    width: 100%
+  .back-title
+    font-size: 4rem
+    left: 50%
+    margin-left: -18rem
+  &__title
+    z-index: 1
+    position: relative
+    h2
+      font-size: 2.4rem
+      font-weight: 700
+      text-align: center
+      margin-bottom: 2rem
+    p
+      color: $fade-white
+      text-align: center
+      font-size: 1.8rem
+      max-width: 95rem
+      margin: 0 auto
+
+  @media screen and (min-width: $medium-screen)
+    padding: 8rem 0 0
+    &__title
+      h2
+        font-size: 3.8rem
+    .back-title
+      font-size: 8rem
+      margin-left: -36rem
+
+    .gradient-btn,
+    .btn--simple
+      width: auto
+      font-size: 2.6rem
+    &__column
+      flex: 1 1 29rem
+      h3
+        font-size: 3.2rem
+
+  @media screen and (min-width: $large-screen)
+    padding: 10rem 0 0
+    .back-title
+      font-size: 11rem
+      margin-left: -50rem
+    &__columns
+      flex-direction: row
+      margin-bottom: 9rem
+      margin-top: 8rem
+    &__title
+      h2
+        font-size: 3.8rem
+      p
+        font-size: 2.3rem
+        margin: 4rem auto 0
+  @media screen and (min-width: $xlarge-screen)
+    padding: 12rem 0 0
+    .back-title
+      font-size: 14rem
+      margin-left: -60rem
+
+.funding
+  img
+    width: 100%
+    height: auto
+  &__list
+    display: flex
+    flex-direction: column
+    margin-top: 4rem
+    gap: 2.5rem
+  &__row
+    display: flex
+    align-items: center
+    gap: 2rem
+    img
+      height: 3rem
+      width: 3rem
+  &__main
+    margin-bottom: 6rem
+    padding: 2px
+    border-radius: 1.6rem
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #12FF3C, #0058BF, #F91690)
+    .gradient
+      background-image: url('../img/horizontal-gradient.svg')
+      background-repeat: no-repeat
+      width: 100%
+      height: 100%
+      position: absolute
+      background-position: center
+      background-size: cover
+      top: 0
+      left: 0
+    &-wrapper
+      position: relative
+      background: #000
+      border-radius: 1.6rem
+      padding: 3rem
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+    &-icon
+      background: radial-gradient(102.19% 102.19% at 17.44% 15.12%, rgba(50, 49, 49, 0.83) 0%, rgba(28, 28, 28, 0.83) 100%)
+      width: 5rem
+      height: 5rem
+      border-radius: 1rem
+      display: flex
+      align-items: center
+      justify-content: center
+      img
+        height: 2rem
+        width: auto
+    h3
+      font-size: 2.5rem
+      text-transform: uppercase
+      margin: 2rem 0 1rem
+    p
+      font-size: 1.7rem
+      color: $almost-white
+      margin-bottom: 2rem
+    a
+      font-size: 2.3rem
+      font-weight: 400
+      color: white
+      text-decoration: none
+      align-self: flex-end
+      display: flex
+      align-items: center
+      gap: 7px
+      z-index: 1
+      &:hover
+        color: $fade-white
+      &:hover i
+        @include text-gradient(linear,#0058BF,#F91690,45deg)
+      sup
+        font-size: 11px
+        line-height: 13px
+        color: $green
+        top: -1.5rem
+      i
+        font-size: 1.5rem
+        left: 0
+        position: relative
+        transition: left 0.2s ease-in
+
+  &__columns
+    display: flex
+    flex-direction: column
+    gap: 4rem
+  &__column
+    display: flex
+    flex-direction: column
+    flex: 1 0 31%
+    gap: 4rem
+  &__card
+    padding: 5rem 4rem 4rem
+    border-radius: 2.7rem
+    background: $black
+    display: flex
+    flex-direction: column
+    flex: 1 0 auto
+    &-icon
+      background: radial-gradient(102.19% 102.19% at 17.44% 15.12%, rgba(50, 49, 49, 0.83) 0%, rgba(28, 28, 28, 0.83) 100%)
+      width: 5rem
+      height: 5rem
+      border-radius: 1rem
+      display: flex
+      align-items: center
+      justify-content: center
+      img
+        width: auto
+    .content
+      flex: 1 0 auto
+    h3
+      font-size: 2.5rem
+      color: $fade-white
+      margin: 1rem 0 1.5rem
+      sup
+        color: $green
+        font-size: 11px
+        text-transform: uppercase
+        padding: 9px
+        border-radius: 7px
+        background: rgba(18, 255, 60, 0.1)
+    p
+      font-size: 1.7rem
+      font-weight: 400
+      color: $lite-gray
+      margin-bottom: 4rem
+    a
+      font-size: 1.9rem
+      font-weight: 400
+      color: white
+      text-decoration: none
+      display: flex
+      align-items: center
+      gap: 7px
+      &:hover
+        color: $fade-white
+      &:hover i
+        color: $green
+        left: 0.5rem
+      sup
+        font-size: 11px
+        line-height: 13px
+        color: $green
+        top: -1.5rem
+      i
+        font-size: 1.4rem
+        left: 0
+        position: relative
+        transition: left 0.2s ease-in
+
+  @media screen and (min-width: $medium-screen)
+
+  @media screen and (min-width: $large-screen)
+    &__columns
+      flex-direction: row
+
+.build
+  position: relative
+  padding: 8rem 0 0
+  margin-bottom: 10rem
+  .back-title
+    left: 50%
+    margin-left: -16rem
+    font-size: 8rem
+  &__slider
+    text-align: center
+    img
+      width: 30rem
+  &__gradient
+    position: absolute
+    width: 45rem
+    height: 45rem
+    background: linear-gradient(180deg, rgba(60, 255, 94, 0.4) 0%, rgba(60, 255, 94, 0.1) 75%)
+    opacity: 0.5
+    filter: blur(6rem)
+    top: 10rem
+    right: 15rem
+    z-index: 1
+  &__content
+    max-width: 120rem
+    margin: 0 auto 5rem auto
+  &__title
+    z-index: 1
+    position: relative
+    margin-bottom: 8rem
+    h2
+      font-size: 2.4rem
+      font-weight: 700
+      text-align: center
+      margin-bottom: 3rem
+    p
+      color: $fade-white
+      text-align: center
+      font-size: 1.8rem
+      max-width: 60rem
+      margin: 0 auto 7rem auto
+    h3
+      font-family: $secondary-font
+      font-size: 1.6rem
+      text-align: center
+      text-transform: uppercase
+      letter-spacing: 2px
+      margin-bottom: 6rem
+      @include text-gradient(linear,#12FF3C,#007C16,45deg)
+
+  @media screen and (min-width: $small-screen)
+    &__slider
+      img
+        width: 40rem
+
+  @media screen and (min-width: $medium-screen)
+    padding: 15rem 0 0
+    margin-bottom: 0
+    &__slider
+      img
+        width: 50rem
+    &__title
+      h2
+        font-size: 3.8rem
+      h3
+        font-size: 2.8rem
+    .back-title
+      margin-left: -34rem
+      font-size: 16rem
+  @media screen and (min-width: $large-screen)
+    padding: 20rem 0 0
+    &__slider
+      img
+        width: 95rem
+    .back-title
+      margin-left: -44rem
+      font-size: 22rem
+  @media screen and (min-width: $xlarge-screen)
+    padding: 25rem 0 0
+    .back-title
+      margin-left: -60rem
+      font-size: 30rem
+
+.compare
+  position: relative
+  padding: 15rem 0 10rem
+  display: flex
+  gap: 5rem
+  &__wrapper
+    display: flex
+    flex-direction: column
+  &__nav
+    a
+      display: flex
+      width: 8rem
+      height: 8rem
+      border-radius: 50%
+      background-color: $card-bg
+      color: white
+      text-decoration: none
+      align-items: center
+      justify-content: center
+      &:hover
+        i
+          color: $green
+      i
+        font-size: 2.6rem
+  &__title
+    z-index: 1
+    position: relative
+    h2
+      font-size: 3.5rem
+      font-weight: 700
+      margin-bottom: 4rem
+    p
+      color: $fade-white
+      font-size: 2.5rem
+      margin-bottom: 8rem
+  &__button
+    display: flex
+    align-items: center
+    gap: 2rem
+    text-decoration: none
+    color: white
+    font-size: 2.5rem
+    font-weight: 500
+    align-self: flex-end
+    i
+      display: flex
+      align-items: center
+      justify-content: center
+      font-size: 1.5rem
+      width: 4.8rem
+      height: 4.8rem
+      border-radius: 50%
+      background: linear-gradient(210deg, #6BFF85, #1471DD, #980C71)
+  &__table
+    width: 100%
+    border-collapse: collapse
+    margin-bottom: 5rem
+    thead
+      th
+        font-size: 2.5rem
+        font-weight: 700
+        color: white
+        text-align: center
+        text-transform: capitalize
+        padding: 4rem
+        border-left: 1px solid #3A3A3A
+        span
+          display: flex
+          flex-direction: column
+          align-items: center
+    tbody
+      th
+        font-size: 2rem
+        font-weight: 700
+        text-align: left
+        padding: 2.5rem
+      td
+        font-size: 2rem
+        font-weight: 450
+        color: $fade-white
+        text-align: center
+        padding: 2.5rem 4rem
+        border-left: 1px solid #3A3A3A

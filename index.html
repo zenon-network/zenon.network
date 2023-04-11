@@ -1,811 +1,1029 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zenon &mdash; Network of Momentum</title>
-    <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#6FF34D">
-    <meta name="msapplication-TileColor" content="#000000">
-    <meta name="theme-color" content="#000000">
-    <!--Zenon Network is an independent entity-->
-    <script>
-        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-        posthog.init('phc_LlvOUrxWAJd4SVXX3twmynNFMhB7q2r2Y8vIhG6cLCX',{api_host:'https://app.posthog.com'})
-    </script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenon &mdash; Network of Momentum</title>
+  <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="css/flipster.min.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#6FF34D">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="theme-color" content="#000000">
+  <!--Zenon Network is an independent entity-->
 </head>
 
 <body class="animateBody">
-    <div id="loader" class="custom-container fadeIn">
-        <div id="loading" class="lds-dual-ring"></div>
-        <div id="container" class="container hidden">
-            <lottie-player id="intro" class="invisible" renderer="canvas" mode="normal" speed="0.8"></lottie-player>
-        </div>
+  <div id="loader" class="custom-container fadeIn">
+    <div id="loading" class="lds-dual-ring"></div>
+    <div id="container" class="container hidden">
+      <lottie-player id="intro" class="invisible" renderer="svg" preserveAspectRatio="xMidYMid slice" mode="normal" speed="1.0"></lottie-player>
     </div>
+  </div>
 
-    <div class="wrapper hideBody">
+  <div class="wrapper hideBody">
 
-        <header id="header">
-            <nav>
-                <div class="container">
-                    <div class="navbar">
-                        <div class="navbar__top">
-                            <a href="#bigTitle" class="navbar__logo scroll">
-                                <img src="./img/logo.svg" alt="logo" />
-                            </a>
-                            <ul class="navbar__buttons">
-                                <a href="https://www.coingecko.com/en/coins/zenon" target="_blank"
-                                    rel="noreferrer noopener" class="btn btn--primary btn--transparent">
-                                    ZNN $<span id="znn-price"></span>
-                                </a>
-                                <a href="javascript:;" rel="noreferrer noopener"
-                                    class="btn btn--ternary btn--transparent">
-                                    QSR ~$<span id="qsr-price"></span>
-                                </a>
-                            </ul>
-                            <button type="button" class="btn burger-menu">
-                                <i class="fas fa-bars"></i>
-                            </button>
-                        </div>
-                        <ul class="navbar__menu">
-                            <li><a class="scroll" href="#mission">Mission</a></li>
-                            <li><a class="scroll" href="#actors">Actors</a></li>
-                            <li><a class="scroll" href="#wznn">wZNN</a></li>
-                            <li><a class="scroll" href="#downloads">Downloads</a></li>
-                            <li><a href="accelerator.html">Accelerator-Z</a></li>
-                        </ul>
-                        <ul class="navbar__social">
-                            <li><a href="https://twitter.com/Zenon_Network" target="_blank" rel="nofollow"><i
-                                        class="fab fa-twitter"></i></a></li>
-                            <li><a href="https://t.me/joinchat/MLyPehLIbJj1nw1XOOOltg" target="_blank" rel="nofollow"><i
-                                        class="fab fa-telegram"></i></a></li>
-                            <li><a href="https://discord.com/invite/ZvrFDUEbcN" target="_blank" rel="nofollow"><i
-                                        class="fab fa-discord"></i></a></li>
-                            <li><a href="https://github.com/zenon-network" target="_blank" rel="nofollow"><i
-                                        class="fab fa-github"></i></a></li>
-                            <li><a href="https://bitcointalk.org/index.php?topic=5279643.msg55303681#msg55303681"
-                                    target="_blank" rel="nofollow"><i class="fab fa-bitcoin"></i></a></li>
-                            <li><a href="https://medium.com/@zenon.network" target="_blank" rel="nofollow"><i
-                                        class="fab fa-medium-m"></i></a></li>
-                            <li><a href="https://www.youtube.com/channel/UCDb8ZtqBt6l5l4HugCnJwhQ" target="_blank"
-                                    rel="nofollow"><i class="fab fa-youtube"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <main>
-
-            <section id="bigTitle">
-                <div class="container">
-                    <div class="section bigTitle">
-                        <div class="section__container section__container--column">
-                            <h3>Welcome to Alphanet</h3>
-                            <h2>Network of Momentum</h2>
-                            <p>The self-evolving network empowering anyone through<br /> true decentralization</p>
-                            <div class="buttons">
-                                <a href="#downloads" class="scroll btn">Download wallet <i
-                                        class="fas fa-download"></i></a>
-                                <a href="#wznn" class="scroll btn">Get ZNN <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="timeline">
-                <div class="container">
-                    <div class="section tags">
-                        <div class="section__container">
-                            <div class="cards">
-                                <div class="cards__top">
-                                    <div class="cards__group">
-                                        <div class="card__row">
-                                            <div class="card card--30 card--no-border card--big card--no-radius-right">
-                                                <div class="card--alphanet">
-                                                    <span class="card__live live">Live</span>
-                                                    <h3 class="card__title">Alphanet</h3>
-                                                    <p>Network of Momentum</p>
-                                                    <p>Phase 0</p>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="card card--40 card--margin blue card--big card--no-radius-right">
-                                                <div class="card--orbital">
-                                                    <a target="_blank" rel="nofollow"
-                                                        href="https://medium.com/p/2f9567830105"
-                                                        class="card__title scroll">ORBITAL Program<br />Protocol Level
-                                                        Liquidity</a>
-                                                    <p>Coming soon</p>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="card card--15 card--margin blue card--big card--no-radius-right">
-                                                <div class="card--orbital">
-                                                    <a href="#" class="card__title scroll">A new NFT<br />standard</a>
-                                                    <p>Coming soon</p>
-                                                </div>
-                                            </div>
-                                            <div class="card card--15 card--margin blue card--big">
-                                                <div class="card--orbital">
-                                                    <a href="#" class="card__title scroll">zApps</a>
-                                                    <p>Coming soon</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card__row">
-                                            <div class="card card--20 card--no-border card--no-radius-right">
-                                                <div class="card--znn">
-                                                    <span class="card__live live">Live</span>
-                                                    <a href="#wznn" class="card__title scroll">wZNN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card card--20 card--margin green card--no-radius-right">
-                                                <div class="card--program">
-                                                    <span class="card__live live">Live</span>
-                                                    <a target="_blank" rel="nofollow"
-                                                        href="https://bridge.zenon.network"
-                                                        class="card__title">Liquidity Program</a>
-                                                </div>
-                                            </div>
-                                            <div class="card card--60 card--margin green">
-                                                <div class="card--program">
-                                                    <span class="card__live live">Live</span>
-                                                    <a href="#wznn" class="card__title scroll">wZNN 2 way bridge</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card__row">
-                                            <div class="card card--50 card--no-radius-right  card--no-border">
-                                                <div class="card--fabric">
-                                                    <span class="card__live live">Live</span>
-                                                    <a target="_blank" rel="nofollow"
-                                                        href="https://medium.com/p/12f0ecd5411a"
-                                                        class="card__title">Zenon Fabric</a>
-                                                </div>
-                                            </div>
-                                            <div class="card card--20 card--margin white card--no-radius-right">
-                                                <div class="card--accelerator">
-                                                    <span class="card__live live">Live</span>
-                                                    <h3 class="card__title">Accelerator-Z</h3>
-                                                </div>
-                                            </div>
-                                            <div class="card card--30 card--margin white">
-                                                <div class="card--accelerator">
-                                                    <h3 class="card__title">Vested Pillars</h3>
-                                                    <p>Coming soon</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="mission">
-                <div class="container">
-                    <div class="section mission">
-                        <h2><span>Mission</span></h2>
-                        <div class="section__container section__container--column">
-
-                            <div class="mission__wrapper">
-                                <div class="mission__left">
-                                    <p>Zenon is a cryptocurrency based on a decentralized network that aims to create
-                                        next-generation tools powering the digital ecosystem of the future</p>
-                                </div>
-                                <div class="mission__right">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="container">
-                    <div class="section points">
-                        <div class="section__container">
-                            <div class="points__column">
-                                <div class="points__icon">
-                                    <lottie-player src="img/anim/scalable.json" autoplay loop id="scalable"
-                                        renderer="canvas"></lottie-player>
-                                </div>
-                                <h3>Scalable</h3>
-                                <p>
-                                    Designed for scalability and enabling massively concurrent transactional throughput
-                                    while preserving decentralization
-                                </p>
-                            </div>
-                            <div class="points__column">
-                                <div class="points__icon">
-                                    <lottie-player src="img/anim/smart.json" autoplay loop id="scalable"
-                                        renderer="canvas"></lottie-player>
-                                </div>
-                                <h3>Smart</h3>
-                                <p>
-                                    A programmable cryptocurrency that enables tokenization of value and zApps
-                                    development
-                                </p>
-                            </div>
-                            <div class="points__column">
-                                <div class="points__icon">
-                                    <lottie-player src="img/anim/secure.json" autoplay loop id="scalable"
-                                        renderer="canvas"></lottie-player>
-                                </div>
-                                <h3>Secure</h3>
-                                <p>
-                                    A dual-ledger system secured by state-of-the-art cryptography based on a
-                                    decentralized p2p network with distributed topology
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="ecosystem">
-                <div class="container">
-                    <div class="section qsr">
-                        <div class="section__container section__container--column">
-                            <h2>Based on a dual-coin mechanism<br /> ZNN & QSR work in synergy to power<br /> the
-                                ultimate protocol for creating
-                                <br /> digital value
-                            </h2>
-                            <div class="section__top">
-                                <lottie-player src="img/anim/znnxqsr.json" autoplay loop id="znnxqsr" renderer="canvas"
-                                    speed="0.8">
-                                </lottie-player>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="container">
-                    <div class="section zenon">
-                        <div class="section__container">
-                            <div class="cards-big">
-                                <div class="card-big card-big--zenon">
-                                    <div class="card-big__wrapper">
-                                        <h4>ZNN</h4>
-                                        <h3>Zenon</h3>
-                                        <p>
-                                            Zenon works in synergy with Quasar powering Network of Momentum. ZNN is used
-                                            as locked collateral to spawn Pillars, Sentinels and staking. It is also
-                                            used to delegate to Pillars in order to increase their weight and increase
-                                            their rank in the network
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="cards-big__right">
-                                    <div class="card-big card-big--quasar">
-                                        <div class="card-big__wrapper">
-                                            <h4>QSR</h4>
-                                            <h3>Quasar</h3>
-                                            <p>
-                                                Quasar is used to create Pillars & Sentinels Slots and as an alternative
-                                                method to generate Plasma beyond proof-of-work, which is required for a
-                                                higher transactional throughput
-                                            </p>
-                                            <a href="https://medium.com/@zenon.network/project-quasar-88c3ddf850c3"
-                                                rel="noreferrer noopener" target="_blank">Learn about QSR <i
-                                                    class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="cards-big__group">
-
-                                        <div class="card-big card-big--wrapped">
-                                            <div class="card-big__wrapper">
-                                                <h4>wZNN</h4>
-                                                <h3>Wrapped Zenon</h3>
-                                                <p>
-                                                    Wrapped ZNN, powered by the BNB Chain experimental bridge is opening
-                                                    a new gateway for the Zenon ecosystem
-                                                </p>
-                                                <a href="https://pancakeswap.finance/swap?inputCurrency=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c&outputCurrency=0x84b174628911896a3b87fa6980d05dbc2ee74836"
-                                                    rel="noreferrer noopener" target="_blank">Get wZNN <i
-                                                        class="fas fa-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-big card-big--quasar">
-                                            <div class="card-big__wrapper">
-                                                <h3>Orbital program</h3>
-                                                <p>Coming soon</p>
-                                                <img src="./img/orbital.svg" />
-                                                <a href="https://medium.com/p/2f9567830105" rel="noreferrer noopener"
-                                                    target="_blank">Read more<i class="fas fa-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="actors">
-                <div class="container">
-                    <div class="section actors">
-                        <h2><span>Alphanet Actors</span></h2>
-                        <div class="section__container section__container--column">
-
-                            <div class="actors__wrapper">
-                                <p>
-                                    Experiment with Alphanet Actors during the Alphanet: live and open for everyone to
-                                    join. Be part of Network of Momentum's Phase 0.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="container">
-                    <div class="section info">
-                        <div class="section__container">
-                            <div class="big-cards">
-                                <div class="big-cards__group">
-                                    <div class="big-cards__row">
-                                        <div class="big-card">
-                                            <h3>Staker</h3>
-                                            <div class="content">
-                                                <p class="text">Staking enables every user to participate in the
-                                                    dual-coin economy</p>
-                                                <p>Requirements</p>
-                                                <button class="btn btn--primary btn--rounded active">> 1 ZNN</button>
-                                                <p>Rewards</p>
-                                                <button class="btn btn--ternary btn--rounded active ">QSR</button>
-                                            </div>
-                                            <a href="#downloads" class="scroll">Stake <i
-                                                    class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                        <div class="big-card">
-                                            <h3>Delegator</h3>
-                                            <div class="content">
-                                                <p class="text">Support Pillars that are actively growing the ecosystem
-                                                    by increasing their rank and get in return a share of their rewards
-                                                </p>
-                                                <p>Requirements</p>
-                                                <button class="btn btn--primary btn--rounded active">> 1 ZNN</button>
-                                                <p>Rewards</p>
-                                                <button class="btn btn--primary btn--rounded active ">ZNN</button>
-                                            </div>
-                                            <a href="#downloads" class="scroll">Delegate <i
-                                                    class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="big-card sentinel">
-                                        <h3>Sentinel</h3>
-                                        <div class="content">
-                                            <p class="text">Full nodes acting as active observers of network operations.
-                                                Each newly deployed Sentinel requires a Sentinel Slot obtained by
-                                                locking a fixed amount of QSR</p>
-                                            <p>Requirements</p>
-                                            <button class="btn btn--primary btn--rounded active">5 000 ZNN</button>
-                                            <button class="btn btn--ternary btn--rounded active">50 000 QSR</button>
-                                            <p>Rewards</p>
-                                            <button class="btn btn--primary btn--rounded active">ZNN</button>
-                                            <button class="btn btn--ternary btn--rounded active">QSR</button>
-                                        </div>
-                                        <a href="#downloads" class="scroll">Deploy <i
-                                                class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="big-card pillar">
-                                    <h3>Pillar</h3>
-                                    <div class="content">
-                                        <p class="text">The backbone of Network of Momentum, Pillars participate both in
-                                            the consensus protocol by validating transactions & the state of the
-                                            dual-ledger and in the governance framework. Each newly deployed Pillar
-                                            requires
-                                            a Pillar Slot that can be obtained by burning a linearly increasing amount
-                                            of QSR</p>
-                                        <p>Requirements</p>
-                                        <button class="btn btn--primary btn--rounded active">15 000 ZNN</button>
-                                        <button class="btn btn--ternary btn--rounded active">&gt; 150 000 QSR</button>
-                                        <p>Rewards</p>
-                                        <button class="btn btn--primary btn--rounded active">ZNN</button>
-                                    </div>
-                                    <a href="#downloads" class="scroll">Deploy <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="swap">
-                <div id="blue"></div>
-                <div id="green"></div>
-                <div class="container">
-                    <div class="section alphanet">
-                        <div class="section__container section__container--column">
-                            <h2>A novel swap mechanism designed for a seamless transition to the Alphanet</h2>
-                            <div class="section__top">
-                                <lottie-player src="img/anim/portal.json" autoplay loop id="portal" renderer="canvas"
-                                    speed="0.6">
-                                </lottie-player>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="container">
-                    <div class="section cycle">
-                        <div class="section__container section__container--column">
-                            <h3>Alphanet Swap Cycles</h3>
-                            <div class="content">
-                                <p>Everyone will easily swap their funds to Alphanet by using the Syrius wallet, the
-                                    command-line tool, or build tools using open source SDKs. Starting with Alphanet
-                                    Launch, there will be a total of 10 Swap Cycles spanning
-                                    over a period of 12 months. The Swap Decay mechanism will decrease the number of
-                                    funds that can be swapped with each passing cycle until the swap window is closed.
-                                </p>
-                            </div>
-                            <a href="https://medium.com/p/658981a9d8bd" rel="noreferrer noopener" target="_blank">Learn
-                                more<i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="zts">
-                <div class="container">
-                    <div class="section zts">
-                        <div class="section__container">
-                            <div class="zts__column">
-                                <div class="letter">
-                                    <span>Z</span>
-                                </div>
-                                <hr />
-                                <div class="content z">
-                                    <h4>Zenon Token<br /> Standard</h4>
-                                    <i class="fas fa-long-arrow-alt-down"></i>
-                                    <p>Provides a new, flexible and secure way for both developers & users to issue and
-                                        manage tokens</p>
-                                </div>
-                            </div>
-                            <div class="zts__column">
-                                <div class="letter">
-                                    <span>T</span>
-                                </div>
-                                <hr />
-                                <div class="content t">
-                                    <h4>Hyper<br /> Transferable</h4>
-                                    <i class="fas fa-long-arrow-alt-down"></i>
-                                    <p>Native and interoperable at the protocol level, token transactions are feeless,
-                                        unlocking a new dimension of possibilities</p>
-                                </div>
-                            </div>
-                            <div class="zts__column">
-                                <div class="letter">
-                                    <span class="last">S</span>
-                                </div>
-                                <hr />
-                                <div class="content s">
-                                    <h4>Ultra<br /> Simplicity</h4>
-                                    <i class="fas fa-long-arrow-alt-down"></i>
-                                    <p>Create and manage tokens in no time with zero code or programming skills directly
-                                        from the s&nbsp;y&nbsp;r&nbsp;i&nbsp;u&nbsp;s wallet</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="wznn">
-                <div class="container">
-                    <div class="section liquidity">
-                        <div class="new-tag">new</div>
-                        <div class="section__container section__container--column">
-                            <h3>Wrapped ZNN (wZNN)</h3>
-                            <div class="content">
-                                <p>
-                                    One more step towards decentralization is being taken by providing experimental
-                                    support for the wrapped ZNN (wZNN) via the BNB Chain 2-way Bridge.
-                                    <br /><br /> Swapping wZNN (BNB Chain) to ZNN (Alphanet) is feeless.
-                                </p>
-                                <div class="liquidity-buttons">
-                                    <a href="https://bridge.zenon.network" target="_blank" rel="noreferrer noopener"
-                                        class="btn btn--primary">2-way Bridge <img src="./img/wznn-icon.svg"
-                                            alt="bridge icon" /></a>
-                                    <a href="https://pancakeswap.finance/swap?inputCurrency=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c&outputCurrency=0x84b174628911896a3b87fa6980d05dbc2ee74836"
-                                        target="_blank" rel="noreferrer noopener" class="btn btn--primary">Trade on
-                                        PancakeSwap <img src="./img/pancakeswap-icon.svg" alt="swap icon" /></a>
-                                    <a href="https://bscscan.com/token/0x84b174628911896a3b87fa6980d05dbc2ee74836"
-                                        target="_blank" rel="noreferrer noopener" class="btn btn--primary">Explore on
-                                        BscScan <img src="./img/bscscan-icon.svg" alt="explore icon" /></a>
-                                </div>
-                            </div>
-                            <a href="https://medium.com/p/272538cde1a7" rel="noreferrer noopener" target="_blank">Learn
-                                more<i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="container" id="downloads">
-                    <div class="section downloads">
-                        <div class="section__container section__container--column">
-                            <h3>Downloads</h3>
-                            <div class="content">
-                                <div class="content__title">
-                                    <img src="./img/syrius-icon.png" alt="syrius-icon" />
-                                    <span><b>s y r i u s</b> &mdash; wallet</span>
-                                </div>
-                                <div class="content__buttons">
-                                    <a target="_blank"
-                                        href="https://github.com/zenon-network/syrius/releases/download/v0.0.5-alphanet/syrius-alphanet-windows-amd64.zip"
-                                        class="btn btn--primary">
-                                        <i class="fab fa-windows"></i> Windows
-                                    </a>
-                                    <a target="_blank"
-                                        href="https://github.com/zenon-network/syrius/releases/download/v0.0.5-alphanet/syrius-alphanet-macos-amd64.dmg"
-                                        class="btn btn--primary">
-                                        <i class="fab fa-apple"></i> Mac
-                                    </a>
-                                    <a href="#" class="btn btn--primary soon">
-                                        <i class="fab fa-linux"></i> Linux
-                                        <sup>soon</sup>
-                                    </a>
-                                </div>
-                                <br />
-                                <div class="content__title">
-                                    <img src="./img/syrius-icon.png" alt="syrius-icon" />
-                                    <span><b>go-zenon</b> &mdash; full node</span>
-                                </div>
-                                <div class="content__buttons">
-                                    <a target="_blank"
-                                        href="https://github.com/zenon-network/go-zenon/releases/download/v0.0.4-alphanet/znnd-windows-amd64.zip"
-                                        class="btn btn--primary">
-                                        <i class="fab fa-windows"></i> Windows
-                                    </a>
-                                    <a target="_blank"
-                                        href="https://github.com/zenon-network/go-zenon/releases/download/v0.0.4-alphanet/znnd-darwin-amd64.zip"
-                                        class="btn btn--primary">
-                                        <i class="fab fa-apple"></i> Mac
-                                    </a>
-                                    <a target="_blank"
-                                        href="https://github.com/zenon-network/go-zenon/releases/download/v0.0.4-alphanet/znnd-darwin-arm64.zip"
-                                        class="btn btn--primary">
-                                        <i class="fab fa-apple"></i> Mac
-                                        <sup>M1</sup>
-                                    </a>
-                                    <a target="_blank"
-                                        href="https://github.com/zenon-network/go-zenon/releases/download/v0.0.4-alphanet/znnd-linux-amd64.zip"
-                                        class="btn btn--primary">
-                                        <i class="fab fa-linux"></i> Linux
-                                    </a>
-                                    <a target="_blank"
-                                        href="https://github.com/zenon-network/go-zenon/releases/download/v0.0.4-alphanet/znnd-linux-arm64.zip"
-                                        class="btn btn--primary">
-                                        <i class="fab fa-linux"></i> Linux
-                                        <sup>ARM</sup>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="bounty">
-                <div class="container">
-                    <div class="section bug">
-                        <div class="section__container section__container--column">
-                            <h3>Bug Bounty</h3>
-                            <div class="content">
-
-                                <p>Discover and fix bugs in Alphanet, SDKs, wallets, and other open-source repos and get
-                                    rewarded & recognized for your help</p>
-                                <div class="table">
-                                    <div class="table__row table__row--header">
-                                        <div class="table__column table__column--no-border">
-                                            <span>Severity</span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span class="table__multiple">
-                                                <div class="toggle toggle--low"></div>
-                                                <span>Low</span>
-                                            </span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span class="table__multiple">
-                                                <div class="toggle toggle--medium"></div>
-                                                <span>Medium</span>
-                                            </span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span class="table__multiple">
-                                                <div class="toggle toggle--high"></div>
-                                                <span>High</span>
-                                            </span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span class="table__multiple">
-                                                <div class="toggle toggle--critical"></div>
-                                                <span>Critical</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="table__row">
-                                        <div class="table__column table__column--no-border">
-                                            <span>CVSS</span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span>0.1 - 3.9</span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span>4.0 - 6.9</span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span>7.0 - 8.9</span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span>9.0 - 10.0</span>
-                                        </div>
-                                    </div>
-                                    <div class="table__row">
-                                        <div class="table__column table__column--no-border">
-                                            <span>Rewards<sup>*</sup></span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span>1 - 100 ZNN</span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span>100 - 500 ZNN</span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span>500 - 1000 ZNN</span>
-                                        </div>
-                                        <div class="table__column table__column--no-border">
-                                            <span>>1000 ZNN</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="table__footnote"><sup>*</sup>Subject to change</span>
-                            </div>
-                            <a href="mailto:portal@zenon.network">Apply&nbsp;<i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class="container">
-                <div class="footer">
-                    <div class="footer__group footer__group--75">
-                        <div class="footer__column footer--explore">
-                            <h4>Explore</h4>
-                            <ul>
-                                <li><a href="#downloads" class="scroll">Join <i class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="https://explorer.zenon.network" rel="noreferrer noopener"
-                                        target="_blank">Explorer <i class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="https://wiki.zenon.network" rel="noreferrer noopener" target="_blank">Wiki
-                                        <i class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="https://github.com/zenon-network/zenon.network/releases/download/whitepaper/whitepaper.pdf"
-                                        rel="noreferrer noopener" target="_blank">Whitepaper <i
-                                            class="fas fa-arrow-right"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="footer__column footer--build">
-                            <h4>Build</h4>
-                            <ul>
-                                <li><a href="https://wiki.zenon.network/#!api.md" rel="noreferrer" target="_blank">APIs
-                                        <i class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="https://github.com/zenon-network" rel="noreferrer" target="_blank">SDKs <i
-                                            class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="#bounty">Bug Bounties <i class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="/accelerator.html" rel="noreferrer">Grants</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="footer__group footer__group--25">
-                        <div class="footer__column footer--community">
-                            <h4>Community</h4>
-                            <ul>
-                                <ul>
-                                    <li><a href="#" class="soon">Contributors <sup>soon</sup></a></li>
-                                    <li><a href="#" class="soon">Events <sup>soon</sup></a></li>
-                                    <li><a href="#" class="soon">Resources <sup>soon</sup></a></li>
-                                </ul>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer__copyright">
-                    <p>&copy; 2022 Zenon Network</p>
-                    <a href="mailto:portal@zenon.network" style="text-decoration:none">
-                        <p>portal@zenon.network</p>
-                    </a>
-                </div>
+    <header id="header">
+      <nav>
+        <div class="container">
+          <div class="navbar">
+            <div class="navbar__top">
+              <a href="#bigTitle" class="navbar__logo scroll">
+                <img src="./img/logo.svg" alt="logo" />
+              </a>
+              <ul class="navbar__buttons">
+                <a href="#exchange"
+                  class="btn btn--primary btn--transparent navbar__buttons--change scroll">
+                  <span class="change">ZNN $<span id="znn-price"></span></span>
+                </a>
+                <a href="#exchange"
+                  class="btn btn--ternary btn--transparent navbar__buttons--change scroll">
+                  <span class="change">QSR $<span id="qsr-price"></span></span>
+                </a>
+              </ul>
+              <button type="button" class="btn burger-menu">
+                <i class="fas fa-bars"></i>
+              </button>
             </div>
-        </footer>
-
-        <div class="progress-wrap">
-            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-            </svg>
+            <ul class="navbar__menu">
+              <li><a class="scroll" href="#protocol">learn</a></li>
+              <li><a class="scroll" href="#earn">earn</a></li>
+              <li><a class="scroll" href="#build">build</a></li>
+            </ul>
+            <ul class="navbar__social">
+              <li><a href="https://twitter.com/Zenon_Network" target="_blank" rel="nofollow"><i
+                    class="fab fa-twitter"></i></a></li>
+              <li><a href="https://t.me/zenonnetwork" target="_blank" rel="nofollow"><i
+                    class="fab fa-telegram"></i></a></li>
+              <li><a href="https://discord.com/invite/zenonnetwork" target="_blank" rel="nofollow"><i
+                    class="fab fa-discord"></i></a></li>
+              <li><a href="https://github.com/zenon-network" target="_blank" rel="nofollow"><i
+                    class="fab fa-github"></i></a></li>
+              <li><a href="https://bitcointalk.org/index.php?topic=5279643.msg55303681#msg55303681" target="_blank"
+                  rel="nofollow"><i class="fab fa-bitcoin"></i></a></li>
+              <li><a href="https://medium.com/@zenon.network" target="_blank" rel="nofollow"><i
+                    class="fab fa-medium-m"></i></a></li>
+              <li><a href="https://www.youtube.com/channel/UCDb8ZtqBt6l5l4HugCnJwhQ" target="_blank" rel="nofollow"><i
+                    class="fab fa-youtube"></i></a></li>
+            </ul>
+          </div>
         </div>
+      </nav>
+    </header>
+
+    <main>
+        <div class="modal fade" id="modal-video">
+          <div class="modal__dialog home--modal">
+              <div class="modal__content">
+                  <div class="modal__header">
+                      <h5 class="modal__title">Watch Video</h5>
+                      <button type="button" class="modal--close" data-dismiss="modal-video" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                      </button>
+                  </div>
+                  <div class="modal__body">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/UqAequz4mgk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                  </div>
+                  <div class="modal__footer"></div>
+              </div>
+          </div>
+        </div>
+
+      <section id="bigTitle">
+        <div class="darken"></div>
+        <div class="container">
+          <div class="section bigTitle">
+            <div class="section__container section__container--column">
+              <div class="bigTitle__text">
+                <h2>The Network of Momentum</h2>
+                <p>
+                  The self-evolving network globally deployed to shape digital economies of scale, powered by a
+                  worldwide community of innovators
+                </p>
+                <div class="bigTitle__buttons">
+                  <a href="#exchange" class="gradient-btn scroll">
+                    Buy Now &nbsp;
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                  <button class="bigTitle__button modal--open" data-modal="modal-video">
+                    <i class="fas fa-play"></i>
+                    Watch Video
+                  </button>
+                </div>
+              </div>
+              <div class="bigTitle__brands">
+                <a target="_blank" href="https://cointelegraph.com/news/a-dual-ledger-layer-one-plans-to-supersede-ethereum-and-solana-by-solving-the-blockchain-trilemma-with-a-feeless-paradigm" class="ct brand"></a>
+                <a target="_blank" href="https://www.bsc.news/post/zenon-network-a-new-cross-chain-liquidity-farming-solution" class="bs brand"></a>
+                <a target="_blank" href="https://finance.yahoo.com/quote/ZNN-USD/profile/" class="yf brand"></a>
+                <a target="_blank" href="https://hackernoon.com/zenon-network-aims-to-be-satoshis-ethereum-stex-bullish-on-aliens" class="hk brand"></a>
+                <a target="_blank" href="https://coinmarketcap.com/currencies/zenon/" class="cmc brand"></a>
+                <a target="_blank" href="https://www.coingecko.com/en/coins/zenon" class="cg brand"></a>
+                <a target="_blank" href="https://www.cryptocompare.com/coins/znn/overview" class="cc brand"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="timer">
+        <div class="container">
+          <div class="section timer">
+            <div class="section__container">
+              <div class="timer__text">
+                <h3>Next reward distribution</h3>
+                <p>
+                  <span class="green">4320 ZNN</span> &amp; <span class="blue">50,000 QSR</span> are distributed every
+                  24 hours. Next distribution in:
+                </p>
+                <a href="#exchange" class="btn btn--simple hidden-sm">Participate now &nbsp; <i class="fas fa-chevron-right"></i></a>
+              </div>
+              <div class="timer__time">
+                <div class="time time--hours">
+                  <span class="number" id="time_hours">12</span>
+                  <span class="text">hours</span>
+                </div>
+                <div class="time time--minutes">
+                  <span class="number" id="time_minutes">35</span>
+                  <span class="text">minutes</span>
+                </div>
+                <div class="time time--seconds">
+                  <span class="number" id="time_seconds">03</span>
+                  <span class="text">seconds</span>
+                </div>
+              </div>
+              <a href="#" class="btn btn--simple visible-sm">Participate now &nbsp; <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="timeline">
+        <div class="container">
+          <div class="section tags">
+            <div class="section__container section__container--column">
+              <div class="milestones">
+                <h1 class="back-title">roadmap</h1>
+                <div class="milestones__title">
+                  <span>Global Scale</span>
+                  <div class="milestones__green"></div>
+                  <span>Global Adoption</span>
+                </div>
+              </div>
+              <div class="times">
+                <div class="my-flipster">
+                  <ul class="times__wrapper">
+                    <li data-flip-title="prev">
+                      <span class="times__label times__label--top times__label--80 times__label--mleft-60" style="top:100px">Pillar Lock-in
+                        phase</span>
+                      <span class="times__label times__label--top times__label--100 times__label--left-90 times__label--long" style="top:3px">First
+                        Alphanet Testnet</span>
+                      <img src="img/circle-4.svg" width="140" height="640"  />
+                      <span
+                        class="times__label times__label--small times__label--bottom times__label--60 times__label--left-90" style="bottom:90px">Whitepaper</span>
+                      <span
+                        class="times__label times__label--small times__label--bottom times__label--60 times__label--mleft-60" style="bottom:130px">Lightpaper</span>
+                    </li>
+                    <li>
+                      <span class="times__label times__label--top times__label--60 times__label--mleft-10" style="top:60px">Quasar Snapshot</span>
+                      <img src="img/circle-3.svg" width="160" height="640"  />
+                      <span class="times__label times__label--bottom times__label--100 times__label--mleft-40" style="bottom:50px">Public Incentivized
+                        Testnet</span>
+                    </li>
+                    <li>
+                      <span class="times__label times__label--top times__label--90 times__label--mleft-20" style="top:-3px">Alphanet
+                        Genesis: Network of Momentum Phase 0</span>
+                      <img src="img/circle-2.svg" width="180" height="640"  />
+                      <span
+                        class="times__label times__label--bottom times__label--60  times__label--mleft-40" style="bottom:15px">WrapDrive
+                        Hackathon</span>
+                    </li>
+                    <li>
+                      <span class="times__label times__label--top times__label--80 times__label--mleft-30" style="top:10px">Accelerator-Z Inception</span>
+                      <img src="img/circle-1.svg" width="220" height="640" />
+                      <span class="times__label times__label--bottom times__label--70 times__label--left-30" style="bottom:0">Cross-chain Liquidity
+                        Program</span>
+                    </li>
+                    <li>
+                      <span class="times__label times__label--top times__label--80 times__label--mleft-30 times__label--mleft-70 times__label--long">Full Node Invasion</span>
+                      <img src="img/circle-center.svg"  width="200" height="640" />
+                      <span class="times__center">You are here</span>
+                      <span class="times__label times__label--bottom times__label--hidden"></span>
+                      <span class="times__label times__label--bottom times__label--80 times__label--mleft-60 times__label--bottom--5">Hyperspace Program</span>
+                    </li>
+                    <li style="z-index: 11;">
+                      <span class="times__label times__label--top times__label--60 times__label--mleft-0" style="top:5px">Syrius Mobile
+                        Wallet</span>
+                      <img src="img/circle-1-grey.svg" width="220" height="640" />
+                      <span
+                        class="times__label times__label--bottom times__label--60 times__label--mleft-50" style="bottom:0">Syrius
+                        Web3 Wallet</span>
+                    </li>
+                    <li style="z-index: 12;">
+                      <span class="times__label times__label--top times__label--80 times__label--mleft-20" style="top:40px">Orbital:<br /> Liquidity
+                        Staking</span>
+                      <img src="img/circle-2-grey.svg" width="180" height="640" />
+                      <span
+                        class="times__label times__label--bottom times__label--80 times__label--mleft-60" style="bottom:0">Expanding
+                        cross-chain presence</span>
+                    </li>
+                    <li style="z-index: 13;">
+                      <span class="times__label times__label--top times__label--80 times__label--mleft-10" style="top:80px">Governance
+                        Module</span>
+                      <img src="img/circle-3-grey.svg"  width="160" height="640" />
+                      <span class="times__label times__label--bottom times__label--hidden"></span>
+                      <span
+                        class="times__label times__label--bottom times__label--60 times__label--mleft-70" style="bottom: 60px;">Scalability
+                        Upgrades</span>
+                        
+                    </li>
+                    <li data-flip-title="next" style="z-index: 14;">
+          
+                      <span class="times__label times__label--top times__label--hidden"></span>
+                      <img src="img/circle-4-grey.svg"  width="140" height="640" />
+                      <span
+                        class="times__label times__label--bottom times__label--100 times__label--mleft-50" style="bottom:90px">Adaptive Smart Contracts Layer</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="protocol">
+        <div class="container">
+          <div class="section protocol">
+            <h1 class="back-title">tech</h1>
+            <div class="protocol__title">
+              <h2>Technology Disruption at Protocol Level</h3>
+                <p>
+                  Decentralized, hyper-scalable global network based on a novel dual-ledger architecture, driven by the ethos and principles of Bitcoin
+                </p>
+            </div>
+            <div class="protocol__container protocol__container--inverse">
+
+              <div class="protocol__left">
+                <div class="protocol__stack">
+                  <div class="protocol__row">
+                    <div class="protocol__card protocol__card--lg">
+                      <div class="protocol__card--wrapper"></div>
+                    </div>
+                    <div class="protocol__card protocol__card--yellow active" rel="tab1">
+                      <div class="protocol__card--wrapper protocol__card--wrapper--last">
+                        <span>ZTS &amp; zApps</span>
+                        <div class="inner">Adoption</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="protocol__row">
+                    <div class="protocol__card protocol__card--lg">
+                      <div class="protocol__card--wrapper">&emsp;&emsp;</div>
+                    </div>
+                    <div class="protocol__card" rel="tab2">
+                      <div class="protocol__card--wrapper protocol__card--wrapper--last">
+                        <span>Dual-Ledger</span>
+                        <div class="inner">Scalability</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="protocol__row">
+                    <div class="protocol__card protocol__card--lg">
+                      <div class="protocol__card--wrapper"></div>
+                    </div>
+                    <div class="protocol__card protocol__card--green" rel="tab3">
+                      <div class="protocol__card--wrapper protocol__card--wrapper--last">
+                        <span>Hybrid Consensus</span>
+                        <div class="inner">Security</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="protocol__row">
+                    <div class="protocol__card protocol__card--lg">
+                      <div class="protocol__card--wrapper">&emsp;&emsp;</div>
+                    </div>
+                    <div class="protocol__card protocol__card--sky" rel="tab4">
+                      <div class="protocol__card--wrapper protocol__card--wrapper--last">
+                        <span>Interoperability</span>
+                        <div class="inner">Accessibility</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="protocol__row">
+                    <div class="protocol__card protocol__card--lg">
+                      <div class="protocol__card--wrapper">&emsp;&emsp;&emsp;&emsp;</div>
+                    </div>
+                    <div class="protocol__card protocol__card--magenta" rel="tab5">
+                      <div class="protocol__card--wrapper protocol__card--wrapper--last">
+                        <span>Plasma</span>
+                        <div class="inner">Feeless</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="protocol__row">
+                    <div class="protocol__card protocol__card--lg">
+                      <div class="protocol__card--wrapper">&emsp;&emsp;</div>
+                    </div>
+                    <div class="protocol__card protocol__card--blue" rel="tab6">
+                      <div class="protocol__card--wrapper protocol__card--wrapper--last">
+                        <span>Dual-economy</span>
+                        <div class="inner">Equilibrium</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="protocol__right">
+                <div id="tab1" class="protocol__tab">
+                  <p class="right-text"><span class="backdrop backdrop--yellow">ZTS</span>A future-proof Token Standard</p>
+                  <p class="right-text right-text--yellow">
+                    The Zenon Token Standard ensures that all crypto-assets issued on NoM inherit the exact same properties of ZNN and QSR: security, censorship-resistance and feeless transfers. ZTS tokens can be seamlessly issued through a user-friendly interface directly from the Syrius wallet.
+                  </p>
+                  <p class="right-text"><span class="backdrop backdrop--yellow">zApps</span>A new breed of applications:</p>
+                  <p class="right-text right-text--yellow">
+                    Advancements in zero-knowledge proof systems, homomorphic encryption and unikernel design will unleash a new class of applications that will obsolete dApps in terms of security, privacy and speed.
+                  </p>
+                </div>
+                <div id="tab2" class="protocol__tab">
+                  <p class="right-text">The Dual-ledger architecture</p>
+                  <p class="right-text right-text--white">
+                    The Network of Momentum architecture is overcoming the current limitations of legacy blockchain systems by introducing a Meta-DAG for consensus coupled with a block-lattice structure that can asynchronously process orders of magnitude more transactions.
+                  </p>
+                </div>
+                <div id="tab3" class="protocol__tab">
+                  <p class="right-text">Hybrid Consensus</p>
+                  <p class="right-text right-text--green">
+                    A hybrid consensus approach that leverages the best mix of Proof-of-Work and Proof-of-Stake to secure the Network of Momentum.
+                  </p>
+                </div>
+                <div id="tab4" class="protocol__tab">
+                  <p class="right-text">A multi-chain approach</p>
+                  <p class="right-text right-text--sky">
+                    Atomic swaps and the decentralized cross-chain bridge will enable users to access and transfer value in a censorship resistant way, while unlocking new use-cases with enhanced portability.
+                  </p>
+                  <p class="right-text right-text--sky">
+                    Interoperability with Bitcoin is a core focus to tap into the security and decentralization of the primordial time-chain.
+                  </p>
+                </div>
+                <div id="tab5" class="protocol__tab">
+                  <p class="right-text">A third dimensional asset enabling zero fees</p>
+                  <p class="right-text right-text--magenta">
+                    Plasma is a novel anti-spam mechanism, enabling the feeless property of the Network of Momentum by fusing QSR or harnessing the power of Proof-of-Work.
+                  </p>
+                </div>
+                <div id="tab6" class="protocol__tab">
+                  <p class="right-text">Dual-economy</p>
+                  <p class="right-text right-text--blue">
+                    The dual-coin economy is based on Zenon (ZNN) and Quasar (QSR) to incentivize a fair participation into the network and avoid the compounding effect of many Proof-of-Stake systems.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section whitepaper">
+            <div class="whitepaper__cards">
+              <a target="_blank" href="https://github.com/zenon-network/zenon.network/releases/download/whitepaper/whitepaper.pdf" class="whitepaper__card">
+                <img src="./img/union.svg" />
+                <button type="button">Whitepaper &nbsp;<i class="fas fa-arrow-right"></i></button>
+              </a>
+              <a href="#" class="whitepaper__card soon">
+                <img src="./img/union-disabled.svg" />
+                <button type="button" class="soon">Compare with other networks &nbsp;<i
+                    class="fas fa-arrow-right"></i><small>soon</small></button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section network">
+            <h1 class="back-title">network</h1>
+            <div class="network__title">
+              <h2>The dual-coin economy of ZNN &amp; QSR</h3>
+                <p>
+                  Based on a dual-coin mechanism, ZNN & QSR work in synergy to power the ultimate protocol for creating
+                  digital value </p>
+            </div>
+            <lottie-player id="dna" src="img/anim/dna.json" clearCanvas="true" autoplay loop
+              mode="normal" speed="0.6"></lottie-player>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="earn">
+        <div class="container">
+          <div class="section join">
+            <div class="elipse"></div>
+            <h1 class="back-title">join now</h1>
+            <div class="join__title">
+              <h2>Get Daily Rewards</h3>
+            </div>
+            <div class="join-content">
+              <div class="join-content__left join-content--full">
+                <h3 class="join-content__title">Become a Network Participant</h3>
+                <div class="join-content__percentages">
+                  <div>
+                    <h4>13.98%<small>Delegators APY</small></h4>
+                    <h4>14.02%<small>Sentinels APY</small></h4>
+                  </div>
+                  <div>
+                    <h4>13.13%<small>Stakers APY</small></h4>
+                    <h4>36.89%<small>Pillars APY</small></h4>
+                  </div>
+                </div>
+                <div class="join-content__buttons">
+                  <a target="_blank" href="https://zenon.tools/calculator" class="gradient-btn">Rewards Calculator &nbsp; <i class="fas fa-chevron-right"></i></a>
+                  <a target="_blank" href="https://www.zenon.org/roles/getting-started" class="btn btn--simple">How to participate &nbsp; <i class="fas fa-chevron-right"></i></a>
+                </div>
+              </div>
+              <div class="join-content__right">
+                <img src="./img/network.png" alt="network" width="410" />
+              </div>
+            </div>
+            <div class="join-content">
+              <div class="join-content__left">
+                <img src="./img/funding.png" alt="funding" width="550" />
+              </div>
+              <div class="join-content__right join-content--full  join-content__right--reverse">
+                <h3 class="join-content__title">Get funding</h3>
+                <p>
+                  Monetize your skills & resources and get on-chain funding to build innovative products and services
+                </p>
+                <a target="_blank" href="https://www.zenon.org/funding/process" class="btn btn--simple">Access funds &nbsp; <i class="fas fa-chevron-right"></i></a>
+              </div>
+            </div>
+            <div class="join-content">
+              <div class="join-content__left join-content--full">
+                <h3 class="join-content__title soon">Provide Liquidity</h3>
+                <p>
+                  Join the Orbital Program and stake your liquidity cross-chain to earn dual coin rewards in ZNN & QSR
+                </p>
+                <a href="#" class="btn btn--simple">Stake now &nbsp; <i class="fas fa-chevron-right"></i> <sup>soon</sup></a>
+              </div>
+              <div class="join-content__right">
+                <img src="./img/liquidity.svg" alt="liquidity" width="720" />
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="exchange">
+        <div class="container">
+          <div class="section trade">
+            <h1 class="back-title">exchange</h1>
+            <div class="trade__title">
+              <h2>Join the Economies of Scale</h3>
+            </div>
+            <div class="trade__columns">
+              <div class="trade__column soon">
+                <div class="trade__card">
+                  <img src="./img/atomic-card.svg" alt="atomic swaps" width="100" />
+                </div>
+                <div class="trade__text">
+                  <h3>Atomic swaps <span>soon</span></h3>
+                  <ul class="trade__tech-list">
+                    <li class="gold"><img src="./img/bitcoin.svg" alt="bitcoin" /> Bitcoin</li>
+                    <li>DEX</li>
+                  </ul>
+                  <p>Atomic swap framework with built-in peer-to-peer cross-chain trading</p>
+                  <ul class="trade__list">
+                    <li class="disabled"><a href="#">ZNN <i class="fa fa-external-link-alt"></i></a></li>
+                    <li class="disabled"><a href="#">QSR <i class="fa fa-external-link-alt"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="trade__column">
+                <div class="trade__card">
+                  <img src="./img/stex-card.svg" alt="stex" />
+                </div>
+                <div class="trade__text">
+                  <h3>Stex</h3>
+                  <ul class="trade__tech-list">
+                    <li>CEX</li>
+                  </ul>
+                  <p>Stex is a multi-currency cryptocurrency trading platform that focuses on ICO and altcoins</p>
+                  <ul class="trade__list">
+                    <li><a target="_blank" href="https://app.stex.com/en/trading/pair/USDT/ZNN/1D">ZNN <i class="fa fa-external-link-alt"></i></a></li>
+                    <li><a target="_blank" href="https://app.stex.com/en/trading/pair/USDT/QSR/1D">QSR <i class="fa fa-external-link-alt"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="trade__column">
+                <div class="trade__card">
+                  <img src="./img/1inch-card.svg" alt="1inch" />
+                </div>
+                <div class="trade__text">
+                  <h3>1inch</h3>
+                  <ul class="trade__tech-list">
+                    <li class="yellow"><img src="./img/bnb.svg" alt="bnb" /> BNB Smart Chain</li>
+                    <li>DEX</li>
+                  </ul>
+                  <p>1inch uses sophisticated security measures to protect users' funds in swaps on other DeFi protocols</p>
+                  <ul class="trade__list">
+                    <li><a target="_blank" href="https://app.1inch.io/#/56/simple/swap/BNB/0x84b174628911896a3b87fa6980d05dbc2ee74836/import-token">wZNN <i class="fa fa-external-link-alt"></i></a></li>
+                    <li class="disabled"><a href="#">wQSR <i class="fa fa-external-link-alt"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="trade__column">
+                <div class="trade__card">
+                  <img src="./img/pancakeswap-card.svg" alt="pancakeswap" />
+                </div>
+                <div class="trade__text">
+                  <h3>PancakeSwap</h3>
+                  <ul class="trade__tech-list">
+                    <li class="yellow"><img src="./img/bnb.svg" alt="bnb" /> BNB Smart Chain</li>
+                    <li>DEX</li>
+                  </ul>
+                  <p>PancakeSwap is a decentralized exchange for swapping BEP20 tokens on Binance Smart Chain</p>
+                  <ul class="trade__list">
+                    <li><a target="_blank" href="https://pancakeswap.finance/swap?inputCurrency=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c&outputCurrency=0x84b174628911896a3b87fa6980d05dbc2ee74836">wZNN <i class="fa fa-external-link-alt"></i></a></li>
+                    <li class="disabled"><a href="#">wQSR <i class="fa fa-external-link-alt"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="trade__column soon">
+                <div class="trade__card">
+                  <img src="./img/uniswap-card.svg" alt="uniswap" />
+                </div>
+                <div class="trade__text">
+                  <h3>Uniswap <span>soon</span></h3>
+                  <ul class="trade__tech-list">
+                    <li class="navy"><img src="./img/etherum.svg" alt="etherum" /> Ethereum</li>
+                    <li>DEX</li>
+                  </ul>
+                  <p>The Uniswap protocol is an open source peer-to-peer decentralized exchange</p>
+                  <ul class="trade__list">
+                    <li class="disabled"><a href="#">wZNN <i class="fa fa-external-link-alt"></i></a></li>
+                    <li class="disabled"><a href="#">wQSR <i class="fa fa-external-link-alt"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="trade__column soon">
+                <div class="trade__card">
+                  <img src="./img/quickswap-card.svg" alt="quickswap" />
+                </div>
+                <div class="trade__text">
+                  <h3>QuickSwap <span>soon</span></h3>
+                  <ul class="trade__tech-list">
+                    <li class="purple"><img src="./img/polygon.svg" alt="polygon" /> Polygon</li>
+                    <li>DEX</li>
+                  </ul>
+                  <p>QuickSwap is a next-gen #DEX for #DeFi. Trade at lightning-fast speeds with near-zero gas fees</p>
+                  <ul class="trade__list">
+                    <li class="disabled"><a href="#">wZNN <i class="fa fa-external-link-alt"></i></a></li>
+                    <li class="disabled"><a href="#">wQSR <i class="fa fa-external-link-alt"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="trade__column soon">
+                <div class="trade__card">
+                  <img src="./img/spiritswap-card.svg" alt="spiritswap" />
+                </div>
+                <div class="trade__text">
+                  <h3>SpiritSwap <span>soon</span></h3>
+                  <ul class="trade__tech-list">
+                    <li class="blue"><img src="./img/fantom.svg" alt="fantom" /> Fantom</li>
+                    <li>DEX</li>
+                  </ul>
+                  <p>The SpiritSwap protocol captures the essence of everything Defi 2.0 on the Fantom network</p>
+                  <ul class="trade__list">
+                    <li class="disabled"><a href="#">wZNN <i class="fa fa-external-link-alt"></i></a></li>
+                    <li class="disabled"><a href="#">wQSR <i class="fa fa-external-link-alt"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="trade__column soon">
+                <div class="trade__card">
+                  <img src="./img/traderjoe-card.svg" alt="trader joe" />
+                </div>
+                <div class="trade__text">
+                  <h3>Trader Joe <span>soon</span></h3>
+                  <ul class="trade__tech-list">
+                    <li class="red"><img src="./img/avalanche.svg" alt="avalanche" /> Avalanche</li>
+                    <li>DEX</li>
+                  </ul>
+                  <p>Trader Joe combines the savory splendor of a classic Cheddar with the satisfying spice of Buffalo wing sauce</p>
+                  <ul class="trade__list">
+                    <li class="disabled"><a href="#">wZNN <i class="fa fa-external-link-alt"></i></a></li>
+                    <li class="disabled"><a href="#">wQSR <i class="fa fa-external-link-alt"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section funding">
+            <div class="funding__columns">
+              <div class="funding__column">
+                <div class="funding__card">
+                  <div class="content">
+                    <div class="funding__card-icon">
+                      <img src="./img/wallet-icon.svg" alt="wallet icon" />
+                    </div>
+                    <h3>Create your wallet</h3>
+                    <p class="mb-0">Syrius is a state-of-the-art non-custodial wallet for the Network of Momentum. Store and manage your ZNN, QSR and ZTS tokens in a cross-platform, user-friendly and safe digital wallet</p>
+                    <img src="./img/wallet-bg.png" alt="wallet bg" />
+                  </div>
+                  <a href="#downloads">Download Syrius wallet <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="funding__card">
+                  <div class="content">
+                    <div class="funding__card-icon">
+                      <img src="./img/stack-icon.svg" alt="stack icon" />
+                    </div>
+                    <h3>Discover SDKs</h3>
+                    <p>Interact with NoM via a variety of SDKs written in the most popular programming languages. Build the future, today</p>
+                    <div class="funding__list">
+                      <div class="funding__row">
+                        <img src="./img/go-icon.svg" alt="go icon" />
+                        <a target="_blank" href="https://github.com/MoonBaZZe/znn-sdk-go">Go <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/java-icon.svg" alt="go icon" />
+                        <a target="_blank" href="https://github.com/KingGorrin/znn_sdk_java/">Java <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/python-icon.svg" alt="python icon" />
+                        <a target="_blank" href="https://github.com/millerships/pyznn">Python <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/c-icon.svg" alt="c# icon" />
+                        <a target="_blank" href="https://github.com/KingGorrin/znn_sdk_csharp">C# <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/ts-icon.svg" alt="typescript icon" />
+                        <a target="_blank" href="https://github.com/DexterLabZ/znn.ts">Typescript <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/rust-icon.svg" alt="rust icon" />
+                        <a target="_blank" href="https://github.com/2bonahill/znn_sdk_rust">Rust <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/kotlin-icon.svg" alt="kotlin icon" />
+                        <a target="_blank" href="https://github.com/ItsChaceD/zenon-android">Kotlin <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="funding__column">
+                <div class="funding__card">
+                  <div class="content">
+                    <div class="funding__card-icon">
+                      <img src="./img/coin-icon.svg" alt="coin icon" />
+                    </div>
+                    <h3>Accelerator-Z</h3>
+                    <p>
+                      Network of Momentum is a DAO of DAOs with a protocol level treasury called Zenon Fabric, managed by the Accelerator-Z embedded contract to fund ongoing operations, research & development and new products and services to expand the ecosystem
+                    </p>
+                  </div>
+                  <a target="_blank" href="https://www.zenon.org/funding/process">Get Funding <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="funding__card">
+                  <div class="content">
+                    <div class="funding__card-icon">
+                      <img src="./img/code-icon.svg" alt="code icon" />
+                    </div>
+                    <h3>Explore Code</h3>
+                    <p class="mb-0">The vision, distilled. Explore the code powering the Network of Momentum. Every contribution matters</p>
+                    <img src="./img/code-bg.png" alt="code bg" />
+                  </div>
+                  <a target="_blank" href="https://github.com/zenon-network">Discover Github <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="funding__card">
+                  <div class="content">
+                    <div class="funding__card-icon">
+                      <img src="./img/compass-icon.svg" alt="compass icon" />
+                    </div>
+                    <h3>Explorers</h3>
+                    <p>Explore the network. One momentum at a time</p>
+                  </div>
+                  <a target="_blank" href="https://zenonhub.io/explorer">Zenon Hub <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+              <div class="funding__column">
+                <div class="funding__card">
+                  <div class="content">
+                    <div class="funding__card-icon">
+                      <img src="./img/laptop-icon.svg" alt="laptop icon" />
+                    </div>
+                    <h3>Bug bounties <sup>soon</sup></h3>
+                    <p>Hunt bugs and claim your reward. Frictionless. Security policy available on Github</p>
+                  </div>
+                  <a target="_blank" href="https://github.com/zenon-network">Discover Github <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="funding__card">
+                  <div class="content">
+                    <div class="funding__card-icon">
+                      <img src="./img/users-icon.svg" alt="users icon" />
+                    </div>
+                    <h3>Join the Community</h3>
+                    <p>Be part of a welcoming community of entrepreneurs, builders, innovators at the forefront of distributed ledger technology and Web3</p>
+                    <div class="funding__list">
+                      <div class="funding__row">
+                        <img src="./img/twitter-icon.svg" alt="twitter icon" />
+                        <a target="_blank" href="https://twitter.com/Zenon_Network">Twitter <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/telegram-icon.svg" alt="telegram icon" />
+                        <a target="_blank" href="https://t.me/zenonnetwork">Telegram <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/github-icon.svg" alt="github icon" />
+                        <a target="_blank" href="https://github.com/zenon-network">Github <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/discord-icon.svg" alt="discord icon" />
+                        <a target="_blank" href="https://discord.com/invite/zenonnetwork">Discord <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/medium-icon.svg" alt="medium icon" />
+                        <a target="_blank" href="https://medium.com/@zenon.network">Medium <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/bitcoin-icon.svg" alt="bitcoin icon" />
+                        <a target="_blank" href="https://bitcointalk.org/index.php?topic=5279643.msg55303681#msg55303681">Bitcoin Talk <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/logo-icon.svg" alt="logo icon" />
+                        <a target="_blank" href="https://forum.zenon.org/">Zenon Community Forum <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                      <div class="funding__row">
+                        <img src="./img/youtube-icon.svg" alt="youtube icon" />
+                        <a target="_blank" href="https://www.youtube.com/channel/UCDb8ZtqBt6l5l4HugCnJwhQ">Youtube <i class="fas fa-arrow-right"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="funding__card">
+                  <div class="content">
+                    <div class="funding__card-icon">
+                      <img src="./img/node-icon.svg" alt="node icon" />
+                    </div>
+                    <h3>Run a Node</h3>
+                    <p>Your node, your rules. Run a node in the Cloud, on your server, personal computer, Mac or Rasperry Pi</p>
+                  </div>
+                  <a target="_blank" href="https://github.com/zenon-network/go-zenon#building-from-source">Build now <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="build">
+        <div class="container">
+          <div class="section build">
+            <h1 class="back-title">build</h1>
+            <div class="build__title">
+              <h2>Join an expanding ecosystem</h3>
+                <h3>built by aliens</h3>
+            </div>
+            <div class="build__slider">
+              <div class="tab-slider__container">
+                <div class="tab-flipster">
+                  <ul>
+                    <li data-flip-title="Syrius extension">
+                      <img src="./img/z.extension.png" alt="page 1" />
+                    </li>
+                    <li data-flip-title="Syrius Mobile">
+                      <img src="./img/z.mobile_app.png"  alt="page 2" />
+                    </li>
+                    <li data-flip-title="Bridge">
+                      <img src="./img/z.bridge.png"  alt="page 3" />
+                    </li>
+                    <li data-flip-title="zenon.org">
+                      <img src="./img/z.org.png"  alt="page 4" />
+                    </li>
+                    <li data-flip-title="zenon.tools">
+                      <img src="./img/z.tools.png"  alt="page 5" />
+                    </li>
+                    <li data-flip-title="Zenon Forum">
+                      <img src="./img/z.forum.png"  alt="page 6" />
+                    </li>
+                    <li data-flip-title="Zenon Wiki">
+                      <img src="./img/z.info.png"  alt="page 7" />
+                    </li>
+                    <li data-flip-title="Plasma bot">
+                      <img src="./img/z.bot.png"  alt="page 8" />
+                    </li>
+                    <li data-flip-title="Zenon Playground">
+                      <img src="./img/z.playground.png"  alt="page 9" />
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="downloads">
+        <div class="container">
+          <div class="section downloads">
+            <h1 class="back-title">downloads</h1>
+            <div class="downloads__title">
+              <h2>Syrius Wallet</h3>
+            </div>
+            <div class="downloads__columns">
+              <div class="downloads__column">
+                <ul>
+                  <li><img src="./img/brave-icon.svg" alt="brave icon" /></li>
+                  <li><img src="./img/chrome-icon.svg" alt="chrome icon" /></li>
+                  <li><img src="./img/firefox-icon.svg" alt="firefox icon" /><sup>soon</sup></li>
+                </ul>
+                <h3>Web3 Browser Wallet</h3>
+                <div class="dropdown disabled">
+                  <button type="button" disabled class="gradient-btn">Download <i class="fas fa-chevron-down"></i></button>
+                  <div class="dropdown__content">
+                    <a href="#"><img src="./img/brave-icon.svg" alt="brave icon" />Brave</a>
+                    <a href="#"><img src="./img/chrome-icon.svg" alt="chrome icon" />Chrome</a>
+                    <a href="#"><img src="./img/firefox-icon.svg" alt="firefox icon" />Firefox</a>
+                  </div>
+                </div>
+              </div>
+              <div class="downloads__column">
+                <ul>
+                  <li><i class="fab fa-apple"></i></li>
+                  <li><i class="fab fa-windows"></i></li>
+                  <li><i class="fab fa-linux"></i></li>
+                </ul>
+                <h3>Desktop Wallet</h3>
+                <div class="dropdown">
+                  <button type="button" class="gradient-btn">Download <i class="fas fa-chevron-down"></i></button>
+                  <div class="dropdown__content">
+                    <a target="_blank" href="https://github.com/zenon-network/syrius/releases/download/v0.0.5-alphanet/syrius-alphanet-windows-amd64.zip"><i class="fab fa-windows"></i>Windows</a>
+                    <a target="_blank" href="https://github.com/zenon-network/syrius/releases/download/v0.0.5-alphanet/syrius-alphanet-macos-amd64.dmg"><i class="fab fa-apple"></i>Mac</a>
+                    <a target="_blank" href="#" class="soon"><i class="fab fa-linux"></i>Linux <sup>soon</sup></a>
+                  </div>
+                </div>
+              </div>
+              <div class="downloads__column">
+                <ul>
+                  <li><img src="./img/android-icon.svg" alt="android icon" /></li>
+                  <li><i class="fab fa-apple"></i><sup>soon</sup></li>
+                </ul>
+                <h3>Mobile Wallet</h3>
+                <div class="dropdown disabled">
+                  <button type="button" disabled class="gradient-btn">Download <i class="fas fa-chevron-down"></i></button>
+                  <div class="dropdown__content">
+                    <a href="#"><i class="fab fa-android"></i>Android</a>
+                    <a href="#"><i class="fab fa-ios"></i>iOS</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a target="_blank" href="https://github.com/zenon-network/" class="btn btn--simple">Open source, forever. &nbsp; <i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer">
+        </div>
+        <div class="footer__copyright">
+          <p>&copy; 2023 Zenon. Built by the Community.</p>
+          <a href="mailto:portal@zenon.network" style="text-decoration:none">
+            <p>portal@zenon.network</p>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="progress-wrap">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+      </svg>
     </div>
+  </div>
 
-    <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js"></script>
-    <script>
-        (function () {
-            var visited = sessionStorage.getItem('visited');
-            var body = document.getElementsByTagName('body');
-            var loading = document.getElementById('loading');
-            var container = document.getElementById('container');
-            var loader = document.getElementById('loader');
-            var player = document.getElementById("intro");
-            var wrapper = document.querySelector('.wrapper');
+  <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@1.7.1/dist/lottie-player.js"></script>
+  <script src="js/flipster.min.js"></script>
+  <script>
+    $('.times__label').hide();
 
-            var desktopAnim = './img/anim/intro.json';
-            var mobileAnim = './img/anim/intro-mobile.json';
+    setTimeout(() => {
+      $('.flipster__item--current').find('.times__label').show();
+    });
+    
+    $('.my-flipster').flipster({
+      style: 'flat',
+      buttons: 'custom',
+      buttonPrev: '<svg width="41" height="79" viewBox="0 0 41 79" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37 4L5 39.5L37 75" stroke="url(#paint0_linear_1411_12)" stroke-width="7" stroke-linecap="round"/><defs><linearGradient id="paint0_linear_1411_12" x1="-24.7931" y1="39.5" x2="50.7931" y2="39.5" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient></defs></svg>',
+      buttonNext: '<svg width="41" height="79" viewBox="0 0 41 79" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.99999 75L36 39.5L3.99999 4" stroke="url(#paint0_linear_1411_2199)" stroke-width="7" stroke-linecap="round"/><defs><linearGradient id="paint0_linear_1411_2199" x1="65.7931" y1="39.5" x2="-9.79311" y2="39.5" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient></defs></svg>',
+      scrollwheel: false,
+      spacing: -0.4,
+      click: true,
+      touch: true,
+      onItemSwitch: (current, previous) => {
+        const title = $(current).data('flip-title');
 
-            if (/Mobi|Android/i.test(navigator.userAgent)) {
-                player.load(mobileAnim);
-            } else {
-                player.load(desktopAnim);
-            }
+        if (title) {
+          $(`.flipster__button--${title}`).hide();
+        } else {
+          $('.flipster__button--prev').show();
+          $('.flipster__button--next').show();
+        }
 
-            player.addEventListener('ready', function () {
+        setTimeout(() => {
+          $('.times__label').hide();
+          $('.flipster__item--current').find('.times__label').show();
+        })
+      }
+    });
 
-                if (visited === 'yes') {
-                    body[0].classList.remove('animateBody');
-                    wrapper.classList.remove('hideBody');
+    $('.tab-flipster').flipster({
+      style: 'carousel',
+      buttons: 'custom',
+      buttonPrev: '<svg width="41" height="79" viewBox="0 0 41 79" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37 4L5 39.5L37 75" stroke="url(#paint0_linear_1411_12)" stroke-width="7" stroke-linecap="round"/><defs><linearGradient id="paint0_linear_1411_12" x1="-24.7931" y1="39.5" x2="50.7931" y2="39.5" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient></defs></svg>',
+      buttonNext: '<svg width="41" height="79" viewBox="0 0 41 79" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.99999 75L36 39.5L3.99999 4" stroke="url(#paint0_linear_1411_2199)" stroke-width="7" stroke-linecap="round"/><defs><linearGradient id="paint0_linear_1411_2199" x1="65.7931" y1="39.5" x2="-9.79311" y2="39.5" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient></defs></svg>',
+      scrollwheel: false,
+      nav: true,
+      spacing: -0.7,
+      touch: true
+    });
 
-                    loader.style.display = 'none';
+    (function () {
+      var visited = sessionStorage.getItem('visited');
+      var body = document.getElementsByTagName('body');
+      var loading = document.getElementById('loading');
+      var container = document.getElementById('container');
+      var loader = document.getElementById('loader');
+      var player = document.getElementById("intro");
+      var wrapper = document.querySelector('.wrapper');
 
-                } else {
-                    body[0].classList.add('animateBody');
+      var desktopAnim = './img/anim/intro.json';
+      var mobileAnim = './img/anim/intro-mobile.json';
 
-                    loader.style.display = 'block';
-                    container.classList.remove('hidden');
+      if (/Mobi|Android/i.test(navigator.userAgent)) {
+        player.load(mobileAnim);
+      } else {
+        player.load(desktopAnim);
+      }
 
-                    setTimeout(() => {
-                        player.classList.remove('invisible');
-                        loading.style.display = 'none';
-                        player.play();
-                    }, 500);
+      player.addEventListener('ready', function () {
 
-                    sessionStorage.setItem('visited', 'yes');
+        if (visited === 'yes') {
+          body[0].classList.remove('animateBody');
+          wrapper.classList.remove('hideBody');
 
-                    player.addEventListener('complete', function () {
-                        wrapper.classList.remove('hideBody');
-                        loader.classList.add('fadeOut');
+          loader.style.display = 'none';
 
-                        setTimeout(() => {
-                            body[0].classList.remove('animateBody');
-                            loader.style.display = 'none';
-                        }, 1000);
-                    });
-                }
-            })
-        })();
-    </script>
+        } else {
+          body[0].classList.add('animateBody');
+
+          loader.style.display = 'block';
+          container.classList.remove('hidden');
+
+          setTimeout(() => {
+            player.classList.remove('invisible');
+            loading.style.display = 'none';
+            player.play();
+          }, 500);
+
+          sessionStorage.setItem('visited', 'yes');
+
+          player.addEventListener('complete', function () {
+            wrapper.classList.remove('hideBody');
+            loader.classList.add('fadeOut');
+
+            setTimeout(() => {
+              body[0].classList.remove('animateBody');
+              loader.style.display = 'none';
+            }, 1000);
+          });
+        }
+      })
+    })();
+  </script>
 </body>
 
 </html>
