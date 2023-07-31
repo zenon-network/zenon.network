@@ -93,12 +93,13 @@
     }
 })();
 
-$("document").ready(function() {
+$(document).ready(function() {
     $.get("https://api.coingecko.com/api/v3/simple/price?ids=zenon-2&vs_currencies=usd", function(data) {
-        $("#znn-price").text(data.['zenon-2'].usd.toFixed(2));
+        $("#znn-price").text(data['zenon-2'].usd.toFixed(2));
     });
+
     $.get("https://api.coingecko.com/api/v3/simple/price?ids=quasar-2&vs_currencies=usd", function(data) {
-        $("#qsr-price").text(data.['quasar-2'].usd.toFixed(2));
+        $("#qsr-price").text(data['quasar-2'].usd.toFixed(2));
     });
 
     $('.scroll').click(function() {
