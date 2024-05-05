@@ -5137,6 +5137,10 @@ main {
   background: #181A2E;
   border: 0.5px solid #2E3252;
 }
+.trade__tech-list li.black {
+  background: #000;
+  border: 0.5px solid #00CCFF;
+}
 .trade__tech-list li.blue {
   background: #12184B;
   border: 0.5px solid #6A79FF;
