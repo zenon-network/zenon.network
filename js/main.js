@@ -98,10 +98,11 @@ $(document).ready(function() {
         $("#znn-price").text(data['zenon-2'].usd.toFixed(2));
     });
 
-    $.get("https://api.coingecko.com/api/v3/simple/price?ids=quasar-2&vs_currencies=usd", function(data) {
-        $("#qsr-price").text(data['quasar-2'].usd.toFixed(2));
+    $.get("https://api.geckoterminal.com/api/v2/networks/eth/tokens/0x96546afe4a21515a3a30cd3fd64a70eb478dc174", function(response) {
+        var priceUsd = response.data.attributes.price_usd;
+        $("#qsr-price").text(parseFloat(priceUsd).toFixed(2));
     });
-
+    
     $('.scroll').click(function() {
         $('body').animate({
             scrollTop: eval($($(this).attr('href')).offset().top - 70)
