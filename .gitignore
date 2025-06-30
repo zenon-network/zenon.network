@@ -41,3 +41,16 @@ testem.log
 .DS_Store
 Thumbs.db
 */.DS_Store
+
+# Performance testing and audit files
+performance-test.html
+performance-results.html
+webp-test.html
+check-image-loading.js
+test-optimizations.js
+optimization-test-plan.md
+OPTIMIZATION_AUDIT_REPORT.md
+QUICK_FIX_GUIDE.md
+
+# Backup directories
+/img/original-backup/
