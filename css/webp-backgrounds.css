@@ -1,0 +1,36 @@
+/* WebP background images with PNG fallback */
+
+/* Default PNG backgrounds */
+#bigTitle {
+    background-image: url('../img/ball.png');
+}
+
+#timeline {
+    background-image: url('../img/star-background.png');
+}
+
+.section.join {
+    background-image: url('../img/ellipse.png');
+}
+
+/* WebP backgrounds for supported browsers */
+.webp #bigTitle {
+    background-image: url('../img/ball.webp');
+}
+
+.webp #timeline {
+    background-image: url('../img/star-background.webp');
+}
+
+.webp .section.join {
+    background-image: url('../img/ellipse.webp');
+}
+
+/* Ball and swirl backgrounds if they exist in CSS */
+.webp .ball-bg {
+    background-image: url('../img/ball.webp');
+}
+
+.webp .swirl-bg {
+    background-image: url('../img/swirl.webp');
+}

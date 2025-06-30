@@ -7,6 +7,7 @@
   <title>Zenon &mdash; Network of Momentum</title>
   <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/webp-backgrounds.css">
   <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
   <link rel="stylesheet" href="css/flipster.min.css">
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
@@ -24,6 +25,7 @@
 </head>
 
 <body class="animateBody">
+  <script src="./js/webp-detect.js"></script>
   <div id="loader" class="custom-container fadeIn">
     <div id="loading" class="lds-dual-ring"></div>
     <div id="container" class="container hidden">
@@ -421,8 +423,8 @@
                   Based on a dual-coin mechanism, ZNN & QSR work in synergy to power the ultimate protocol for creating
                   digital value </p>
             </div>
-            <lottie-player id="dna" src="img/anim/dna.json" clearCanvas="true" autoplay loop
-              mode="normal" speed="0.6"></lottie-player>
+            <lottie-player id="dna" clearCanvas="true" autoplay loop
+              mode="normal" speed="0.6" renderer="svg"></lottie-player>
 
           </div>
         </div>
@@ -455,12 +457,12 @@
                 </div>
               </div>
               <div class="join-content__right">
-                <img src="./img/network.png" alt="network" width="410" />
+                <img data-lazy-src="./img/network.png" data-webp="./img/network.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='410' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23f0f0f0'/%3E%3C/svg%3E" alt="network" width="410" />
               </div>
             </div>
             <div class="join-content">
               <div class="join-content__left">
-                <img src="./img/funding.png" alt="funding" width="550" />
+                <img data-lazy-src="./img/funding.png" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='550' height='400'%3E%3Crect width='100%25' height='100%25' fill='%23f0f0f0'/%3E%3C/svg%3E" alt="funding" width="550" />
               </div>
               <div class="join-content__right join-content--full  join-content__right--reverse">
                 <h3 class="join-content__title">Get funding</h3>
@@ -665,7 +667,7 @@
                     </div>
                     <h3>Create your wallet</h3>
                     <p class="mb-0">Syrius is a state-of-the-art non-custodial wallet for the Network of Momentum. Store and manage your ZNN, QSR and ZTS tokens in a cross-platform, user-friendly and safe digital wallet</p>
-                    <img src="./img/wallet-bg.png" alt="wallet bg" />
+                    <img data-lazy-src="./img/wallet-bg.png" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23f0f0f0'/%3E%3C/svg%3E" alt="wallet bg" />
                   </div>
                   <a href="#downloads">Download Syrius wallet <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -729,7 +731,7 @@
                     </div>
                     <h3>Explore Code</h3>
                     <p class="mb-0">The vision, distilled. Explore the code powering the Network of Momentum. Every contribution matters</p>
-                    <img src="./img/code-bg.png" alt="code bg" />
+                    <img data-lazy-src="./img/code-bg.png" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23f0f0f0'/%3E%3C/svg%3E" alt="code bg" />
                   </div>
                   <a target="_blank" href="https://github.com/zenon-network">Discover Github <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -995,6 +997,84 @@
     // Call the function when the page loads
     document.addEventListener('DOMContentLoaded', updateDownloadLinks);
 
+    // Lazy load DNA animation when it comes into view with performance optimization
+    const observeDnaAnimation = () => {
+      const dnaPlayer = document.getElementById('dna');
+      if (!dnaPlayer) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !dnaPlayer.src) {
+            // Load DNA animation with SVG renderer for best quality
+            dnaPlayer.load('img/anim/dna.json');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { 
+        rootMargin: '50px' // Start loading 50px before it's visible
+      });
+
+      observer.observe(dnaPlayer);
+    };
+
+    // General lazy loading function for any large animations
+    const lazyLoadAnimations = () => {
+      const animationElements = document.querySelectorAll('lottie-player[data-lazy-src]');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const element = entry.target;
+            const lazySrc = element.getAttribute('data-lazy-src');
+            
+            if (lazySrc && !element.src) {
+              element.load(lazySrc);
+              observer.unobserve(element);
+            }
+          }
+        });
+      }, { 
+        rootMargin: '100px' // Start loading 100px before visible
+      });
+
+      animationElements.forEach(element => {
+        observer.observe(element);
+      });
+    };
+
+    // Lazy loading for large images
+    const lazyLoadImages = () => {
+      const largeImages = document.querySelectorAll('img[data-lazy-src]');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            const lazySrc = img.getAttribute('data-lazy-src');
+            
+            if (lazySrc) {
+              img.src = lazySrc;
+              img.removeAttribute('data-lazy-src');
+              observer.unobserve(img);
+            }
+          }
+        });
+      }, { 
+        rootMargin: '150px' // Start loading 150px before visible
+      });
+
+      largeImages.forEach(img => {
+        observer.observe(img);
+      });
+    };
+
+    // Initialize lazy loading when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      observeDnaAnimation();
+      lazyLoadAnimations();
+      lazyLoadImages();
+    });
+
     $('.times__label').hide();
 
     setTimeout(() => {
@@ -1050,45 +1130,48 @@
       var desktopAnim = './img/anim/intro.json';
       var mobileAnim = './img/anim/intro-mobile.json';
 
-      if (/Mobi|Android/i.test(navigator.userAgent)) {
-        player.load(mobileAnim);
-      } else {
-        player.load(desktopAnim);
+      // Skip intro animation if user has visited before
+      if (visited === 'yes') {
+        body[0].classList.remove('animateBody');
+        wrapper.classList.remove('hideBody');
+        loader.style.display = 'none';
+        return; // Don't load the heavy animation files
       }
 
-      player.addEventListener('ready', function () {
+      // Only load intro animation for first-time visitors
+      body[0].classList.add('animateBody');
+      loader.style.display = 'block';
+      container.classList.remove('hidden');
 
-        if (visited === 'yes') {
-          body[0].classList.remove('animateBody');
+      // Lazy load the appropriate intro animation
+      var selectedAnim = /Mobi|Android/i.test(navigator.userAgent) ? mobileAnim : desktopAnim;
+      
+      // Show loading indicator immediately
+      setTimeout(() => {
+        loading.style.display = 'none';
+        player.classList.remove('invisible');
+        
+        // Set canvas renderer for better performance
+        player.setAttribute('renderer', 'canvas');
+        
+        // Load animation only when needed
+        player.load(selectedAnim);
+        
+        player.addEventListener('ready', function () {
+          player.play();
+          sessionStorage.setItem('visited', 'yes');
+        });
+
+        player.addEventListener('complete', function () {
           wrapper.classList.remove('hideBody');
-
-          loader.style.display = 'none';
-
-        } else {
-          body[0].classList.add('animateBody');
-
-          loader.style.display = 'block';
-          container.classList.remove('hidden');
+          loader.classList.add('fadeOut');
 
           setTimeout(() => {
-            player.classList.remove('invisible');
-            loading.style.display = 'none';
-            player.play();
-          }, 500);
-
-          sessionStorage.setItem('visited', 'yes');
-
-          player.addEventListener('complete', function () {
-            wrapper.classList.remove('hideBody');
-            loader.classList.add('fadeOut');
-
-            setTimeout(() => {
-              body[0].classList.remove('animateBody');
-              loader.style.display = 'none';
-            }, 1000);
-          });
-        }
-      })
+            body[0].classList.remove('animateBody');
+            loader.style.display = 'none';
+          }, 1000);
+        });
+      }, 500);
     })();
   </script>
 </body>

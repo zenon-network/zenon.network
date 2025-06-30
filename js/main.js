@@ -93,6 +93,86 @@
     }
 })();
 
+// Enhanced lazy loading with WebP support
+(function() {
+    // Check WebP support
+    function supportsWebP() {
+        var elem = document.createElement('canvas');
+        if (!!(elem.getContext && elem.getContext('2d'))) {
+            return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
+        }
+        return false;
+    }
+    
+    var webpSupported = supportsWebP();
+    
+    // Enhanced lazy loading for images
+    function lazyLoadImages() {
+        var lazyImages = document.querySelectorAll('img[data-lazy-src]');
+        
+        var imageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var img = entry.target;
+                    var lazySrc = img.getAttribute('data-lazy-src');
+                    console.log('Loading lazy image:', lazySrc);
+                    
+                    // Check if WebP version exists and is supported
+                    // Use the webp class added by webp-detect.js
+                    var hasWebPSupport = document.documentElement.classList.contains('webp');
+                    
+                    if (hasWebPSupport && img.hasAttribute('data-webp')) {
+                        var webpSrc = img.getAttribute('data-webp');
+                        console.log('Loading WebP version:', webpSrc);
+                        img.src = webpSrc;
+                        img.removeAttribute('data-lazy-src');
+                        img.removeAttribute('data-webp');
+                    } else if (hasWebPSupport && lazySrc.endsWith('.png')) {
+                        var webpSrc = lazySrc.replace('.png', '.webp');
+                        // Try to load WebP version first
+                        var testImg = new Image();
+                        testImg.onload = function() {
+                            console.log('WebP found, using:', webpSrc);
+                            img.src = webpSrc;
+                            img.removeAttribute('data-lazy-src');
+                        };
+                        testImg.onerror = function() {
+                            // Fall back to PNG
+                            console.log('WebP not found, loading PNG:', lazySrc);
+                            img.src = lazySrc;
+                            img.removeAttribute('data-lazy-src');
+                        };
+                        testImg.src = webpSrc;
+                    } else {
+                        img.src = lazySrc;
+                        img.removeAttribute('data-lazy-src');
+                    }
+                    
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '150px'
+        });
+        
+        lazyImages.forEach(function(img) {
+            imageObserver.observe(img);
+        });
+    }
+    
+    // Run lazy loading on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', lazyLoadImages);
+    } else {
+        lazyLoadImages();
+    }
+    
+    // Also run after jQuery ready to catch any dynamic content
+    $(document).ready(function() {
+        setTimeout(lazyLoadImages, 100);
+    });
+})();
+
 $(document).ready(function() {
     $.get("https://api.coingecko.com/api/v3/simple/price?ids=zenon-2&vs_currencies=usd", function(data) {
         $("#znn-price").text(data['zenon-2'].usd.toFixed(2));
