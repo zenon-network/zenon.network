@@ -896,9 +896,9 @@
                 <div class="dropdown">
                   <button type="button" class="gradient-btn">Download <i class="fas fa-chevron-down"></i></button>
                   <div class="dropdown__content">
-                    <a target="_blank" href="https://github.com/zenon-network/syrius/releases/download/v0.2.1-alphanet/syrius-alphanet-windows-amd64.zip"><i class="fab fa-windows"></i>Windows</a>
-                    <a target="_blank" href="https://github.com/zenon-network/syrius/releases/download/v0.2.1-alphanet/syrius-alphanet-macos-universal.dmg"><i class="fab fa-apple"></i>Mac</a>
-                    <a target="_blank" href="https://github.com/zenon-network/syrius/releases/download/v0.2.1-alphanet/syrius-alphanet-linux-amd64.zip"><i class="fab fa-linux"></i>Linux</a>
+                    <a target="_blank" href="https://github.com/zenon-network/syrius/releases/" data-platform="windows"><i class="fab fa-windows"></i>Windows</a>
+                    <a target="_blank" href="https://github.com/zenon-network/syrius/releases/" data-platform="mac"><i class="fab fa-apple"></i>Mac</a>
+                    <a target="_blank" href="https://github.com/zenon-network/syrius/releases/" data-platform="linux"><i class="fab fa-linux"></i>Linux</a>
                   </div>
                 </div>
               </div>
@@ -949,6 +949,52 @@
   <script src="https://unpkg.com/@lottiefiles/lottie-player@1.7.1/dist/lottie-player.js"></script>
   <script src="js/flipster.min.js"></script>
   <script>
+    // Function to fetch latest release and update download links
+    async function updateDownloadLinks() {
+      try {
+        const response = await fetch('https://api.github.com/repos/zenon-network/syrius/releases/latest');
+        const release = await response.json();
+        
+        if (release && release.assets) {
+          // Find the appropriate assets for each platform using the specific filename convention
+          // Format: syrius-alphanet-{platform}-{arch}.{extension}
+          const windowsAsset = release.assets.find(asset => 
+            asset.name.toLowerCase().includes('syrius-alphanet-windows') &&
+            asset.name.toLowerCase().endsWith('.zip')
+          );
+          const macAsset = release.assets.find(asset => 
+            asset.name.toLowerCase().includes('syrius-alphanet-macos') &&
+            asset.name.toLowerCase().endsWith('.dmg')
+          );
+          const linuxAsset = release.assets.find(asset => 
+            asset.name.toLowerCase().includes('syrius-alphanet-linux') &&
+            (asset.name.toLowerCase().endsWith('.zip') || asset.name.toLowerCase().endsWith('.appimage'))
+          );
+          
+          // Update the download links using data-platform attributes
+          if (windowsAsset) {
+            const windowsLink = document.querySelector('a[data-platform="windows"]');
+            if (windowsLink) windowsLink.href = windowsAsset.browser_download_url;
+          }
+          if (macAsset) {
+            const macLink = document.querySelector('a[data-platform="mac"]');
+            if (macLink) macLink.href = macAsset.browser_download_url;
+          }
+          if (linuxAsset) {
+            const linuxLink = document.querySelector('a[data-platform="linux"]');
+            if (linuxLink) linuxLink.href = linuxAsset.browser_download_url;
+          }
+
+        }
+      } catch (error) {
+        console.log('Could not fetch latest release info:', error);
+        // Fallback to the original links if API fails
+      }
+    }
+
+    // Call the function when the page loads
+    document.addEventListener('DOMContentLoaded', updateDownloadLinks);
+
     $('.times__label').hide();
 
     setTimeout(() => {
