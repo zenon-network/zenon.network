@@ -858,7 +858,7 @@
         <div class="footer">
         </div>
         <div class="footer__copyright">
-          <p>&copy; 2025 Zenon. Built by the Community.</p>
+          <p>&copy; <span id="copyright-year"></span> Zenon. Built by the Community.</p>
           <a href="mailto:portal@zenon.network" style="text-decoration:none">
             <p>portal@zenon.network</p>
           </a>
@@ -966,6 +966,9 @@
       spacing: -0.7,
       touch: true
     });
+
+    // Set copyright year dynamically
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
   </script>
 </body>
 
