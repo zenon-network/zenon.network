@@ -3008,14 +3008,13 @@
     gap: 2rem
     margin: 3rem auto 5rem
   &__columns
-    display: flex
-    flex-wrap: wrap
+    display: grid
+    grid-template-columns: 1fr
     gap: 3rem
     margin: 6rem 0
   &__column
     display: flex
     gap: 1.5rem
-    flex: 1 1 auto
   &__card
     display: flex
     align-items: center
@@ -3123,6 +3122,8 @@
 
   @media screen and (min-width: $medium-screen)
     padding: 8rem 0 0
+    &__columns
+      grid-template-columns: repeat(2, 1fr)
     &__title
       h2
         font-size: 3.8rem
@@ -3132,9 +3133,6 @@
 
   @media screen and (min-width: $large-screen)
     padding: 10rem 0 0
-    &__column
-      flex: 1 1 40rem
-      max-width: 42rem
     &__columns
       margin: 10rem 0
       gap: 4rem
@@ -3157,6 +3155,10 @@
     .back-title
       font-size: 12rem
       margin-left: -45rem
+
+  @media screen and (min-width: $xxlarge-screen)
+    &__columns
+      grid-template-columns: repeat(3, 1fr)
 
   @media screen and (min-width: $xxxlarge-screen)
     &__columns
